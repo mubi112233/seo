@@ -1,10 +1,10 @@
 import { Services } from "@/components/Services.server";
 import { Testimonials } from "@/components/Testimonials.server";
 import { HowItWorks } from "@/components/HowItWorks.server";
-import { Pricing } from "@/components/Pricing";
-import { ToolsIntegration } from "@/components/ToolsIntegration";
+import { Pricing } from "@/components/Pricing.server";
+import { ToolsIntegration } from "@/components/ToolsIntegration.server";
 import { CaseStudies } from "@/components/CaseStudies";
-import { Blog } from "@/components/Blog";
+import { Blog } from "@/components/Blog.server";
 import { FAQ } from "@/components/FAQ";
 import { FinalCTA } from "@/components/FinalCTA";
 import { SPACING } from "@/lib/constants";
@@ -15,10 +15,10 @@ export function HomeBelowFold({ lang }: { lang: string }) {
       <div className={SPACING.container}>
         <HowItWorks lang={lang} />
         <Services lang={lang} />
-        <Pricing />
-        <ToolsIntegration />
+        <Pricing lang={lang} />
+        <ToolsIntegration lang={lang} />
         <Testimonials lang={lang} />
-        <Blog />
+        <Blog lang={lang} />
         <CaseStudies />
         <FAQ />
       </div>
