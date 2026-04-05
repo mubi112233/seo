@@ -1,5 +1,4 @@
 import { Instagram, HeadphonesIcon, FolderKanban, TrendingUp } from "lucide-react";
-import { motion } from "framer-motion";
 import * as LucideIcons from "lucide-react";
 import { fetchServicesData } from "@/lib/data-fetching";
 import { SPACING } from "@/lib/constants";
@@ -33,7 +32,7 @@ export async function Services({ lang }: { lang: string }) {
 
   if (!services || services.length === 0) {
     return (
-      <motion.section id="services" className="relative py-8 sm:py-10 md:py-14 lg:py-16 bg-background text-foreground z-30 overflow-hidden min-h-[500px]">
+      <section id="services" className="relative py-8 sm:py-10 md:py-14 lg:py-16 bg-background text-foreground z-30 overflow-hidden min-h-[500px]">
         <div className={`container mx-auto ${SPACING.container}`}>
           <div className="text-center py-20">
             <p className="text-muted-foreground mb-4">
@@ -41,18 +40,14 @@ export async function Services({ lang }: { lang: string }) {
             </p>
           </div>
         </div>
-      </motion.section>
+      </section>
     );
   }
 
   return (
-    <motion.section 
+    <section 
       id="services"
       className="relative py-8 sm:py-10 md:py-14 lg:py-16 bg-background text-foreground z-30 overflow-hidden"
-      initial={{ opacity: 0, y: 100 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 1.2, ease: [0.6, -0.05, 0.01, 0.99] }}
     >
       {/* Background decoration */}
       <div className="absolute top-0 left-1/4 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-primary/5 rounded-full blur-[100px] md:blur-[150px]" />
@@ -60,26 +55,17 @@ export async function Services({ lang }: { lang: string }) {
 
       <div className={`container mx-auto ${SPACING.container} relative z-10`}>
         {/* Section Header */}
-        <motion.div 
-          className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <motion.span 
-            className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-gold text-foreground text-xs sm:text-sm font-bold rounded-full mb-3 sm:mb-4 shadow-md"
-            whileHover={{ scale: 1.05 }}
-          >
+        <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+          <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-gold text-foreground text-xs sm:text-sm font-bold rounded-full mb-3 sm:mb-4 shadow-md">
             {copy.badge}
-          </motion.span>
+          </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 text-foreground leading-tight">
             {copy.heading}
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             {copy.description}
           </p>
-        </motion.div>
+        </div>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto">
@@ -87,25 +73,17 @@ export async function Services({ lang }: { lang: string }) {
             const IconComponent = iconMap[service.icon as keyof typeof iconMap] || LucideIcons.HelpCircle;
             
             return (
-              <motion.div
+              <div
                 key={service._id || index}
                 className="group relative bg-card border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:border-primary/50 hover:bg-gradient-to-br hover:from-card hover:to-primary/5"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
               >
                 {/* Background gradient on hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 {/* Icon */}
-                <motion.div 
-                  className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-primary to-primary/80 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300"
-                  whileHover={{ rotate: [0, 5, -5, 0] }}
-                  transition={{ duration: 0.5 }}
-                >
+                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-primary to-primary/80 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                   <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-primary-foreground" />
-                </motion.div>
+                </div>
                 
                 {/* Content */}
                 <div className="relative z-10">
@@ -126,11 +104,11 @@ export async function Services({ lang }: { lang: string }) {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

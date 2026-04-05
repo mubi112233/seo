@@ -1,6 +1,5 @@
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 import { fetchTestimonialsData, Testimonial } from "@/lib/data-fetching";
 import { getCopy } from "@/lib/copy";
 import { SPACING } from "@/lib/constants";
@@ -13,7 +12,7 @@ export async function Testimonials({ lang }: { lang: string }) {
 
   if (!testimonials || testimonials.length === 0) {
     return (
-      <motion.section id="testimonials" className="relative py-8 sm:py-10 md:py-14 lg:py-16 bg-background text-foreground z-30 overflow-hidden">
+      <section id="testimonials" className="relative py-8 sm:py-10 md:py-14 lg:py-16 bg-background text-foreground z-30 overflow-hidden">
         <div className={`container mx-auto ${SPACING.container}`}>
           <div className="text-center py-20">
             <p className="text-muted-foreground mb-4">
@@ -21,18 +20,14 @@ export async function Testimonials({ lang }: { lang: string }) {
             </p>
           </div>
         </div>
-      </motion.section>
+      </section>
     );
   }
 
   return (
-    <motion.section 
+    <section 
       id="testimonials"
       className="relative py-8 sm:py-10 md:py-14 lg:py-16 bg-background text-foreground z-30 overflow-hidden"
-      initial={{ opacity: 0, y: 100 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 1.2, ease: [0.6, -0.05, 0.01, 0.99] }}
     >
       {/* Background decoration */}
       <div className="absolute top-0 left-1/4 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-gold/5 rounded-full blur-[100px] md:blur-[150px]" />
@@ -40,31 +35,21 @@ export async function Testimonials({ lang }: { lang: string }) {
 
       <div className={`container mx-auto ${SPACING.container} relative z-10`}>
         {/* Section Header */}
-        <motion.div 
-          className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
+        <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 text-foreground leading-tight">
             {copy.heading}
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             {copy.subheading}
           </p>
-        </motion.div>
+        </div>
 
         {/* Testimonials Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto">
           {testimonials.map((testimonial, index) => (
-            <motion.div
+            <div
               key={testimonial._id || index}
               className="group relative bg-card border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:border-gold/50"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
             >
               {/* Quote icon */}
               <div className="absolute -top-3 -right-3 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-gold/20">
@@ -107,10 +92,10 @@ export async function Testimonials({ lang }: { lang: string }) {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }
