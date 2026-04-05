@@ -107,7 +107,7 @@ export default async function HomeLangPage({
         <div className={SPACING.container}>
           <Hero />
         </div>
-        <HomeBelowFold />
+        <HomeBelowFold lang={lang} />
       </main>
     </div>
   );
