@@ -115,7 +115,7 @@ export const Services = () => {
           <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2.5 bg-gold text-foreground text-xs sm:text-sm md:text-base font-semibold rounded-full mb-3 sm:mb-4">
             {copy.badge}
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-left">
             {copy.heading}
           </h2>
           <p className="text-base sm:text-lg md:text-lg lg:text-xl text-muted-foreground max-w-3xl leading-relaxed px-2">

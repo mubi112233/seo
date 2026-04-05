@@ -20,6 +20,12 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'sp.yimg.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
     formats: ['image/webp', 'image/avif'],
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
@@ -41,6 +47,15 @@ const nextConfig = {
     return [
       { source: '/de', destination: '/ge', permanent: false },
       { source: '/de/:path*', destination: '/ge/:path*', permanent: false },
+    ];
+  },
+  // Add ISR configuration for better content freshness
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/api/sitemap',
+      },
     ];
   },
 };

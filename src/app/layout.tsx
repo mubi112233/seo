@@ -29,9 +29,12 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://don-va.com"),
+  metadataBase: new URL("https://don-seo.com"),
+  verification: {
+    google: "l93HxOLqUBDjtuNfHM7OsWQd7i9MfSJo1fV_yaLAZrE",
+  },
   title: {
-    default: "DON VA – Virtual Assistant Services",
+    default: "DON VA - Premium Virtual Assistants | Save 70% on Operations",
     template: "%s | DON VA",
   },
   description:
@@ -44,7 +47,7 @@ export const metadata: Metadata = {
     "business scaling",
     "DON VA",
   ],
-  authors: [{ name: "DON VA", url: "https://don-va.com" }],
+  authors: [{ name: "DON VA", url: "https://don-seo.com" }],
   creator: "DON VA",
   publisher: "DON VA",
   robots: {
@@ -55,24 +58,24 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "DON VA",
-    title: "DON VA – Virtual Assistant Services",
+    title: "DON VA - Premium Virtual Assistants | Save 70% on Operations",
     description:
       "Hire pre-vetted, German-speaking virtual assistants for 80% less than local hires.",
-    url: "https://don-va.com",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "DON VA" }],
+    url: "https://don-seo.com",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "SEO Pro" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DON VA – Virtual Assistant Services",
+    title: "DON VA - Premium Virtual Assistants | Save 70% on Operations",
     description:
       "Hire pre-vetted, German-speaking virtual assistants for 80% less than local hires.",
     images: ["/og-image.jpg"],
   },
   alternates: {
-    canonical: "https://don-va.com/en",
+    canonical: "https://don-seo.com/en",
     languages: {
-      en: "https://don-va.com/en",
-      de: "https://don-va.com/ge",
+      en: "https://don-seo.com/en",
+      de: "https://don-seo.com/ge",
     },
   },
 };
@@ -81,8 +84,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "DON VA",
-  url: "https://don-va.com",
-  logo: "https://don-va.com/logo.png",
+  url: "https://don-seo.com",
+  logo: "https://don-seo.com/favicon.ico",
   description:
     "Pre-vetted, German-speaking virtual assistants for 80% less than local hires.",
   contactPoint: {
@@ -99,6 +102,18 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${poppins.variable}`}>
       <head>
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LNDGNQ7Z74"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-LNDGNQ7Z74');
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -108,7 +123,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-to-content">
           Skip to main content
         </a>
-        <DesignSystemProvider defaultTheme="gold">
+        <DesignSystemProvider defaultTheme="blue">
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

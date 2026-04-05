@@ -6,6 +6,7 @@ import { HomeBelowFold } from "@/components/HomeBelowFold.client";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { fetchApiData, API_ENDPOINTS, normalizeLanguage } from "@/lib/api";
+import { SPACING } from "@/lib/constants";
 
 export const revalidate = 3600;
 
@@ -34,7 +35,7 @@ export async function generateMetadata({
     ? 'Geprüfte, deutschsprachige virtuelle Assistenten für 80% weniger als lokale Einstellungen.'
     : 'Hire pre-vetted, German-speaking virtual assistants for 80% less than local hires.');
   const keywords = hero?.metaKeywords || '';
-  const canonical = `https://don-va.com/${lang === 'ge' ? 'ge' : 'en'}`;
+  const canonical = `https://don-seo.com/${lang === 'ge' ? 'ge' : 'en'}`;
 
   return {
     title,
@@ -42,7 +43,7 @@ export async function generateMetadata({
     ...(keywords && { keywords: keywords.split(',').map((k: string) => k.trim()) }),
     alternates: {
       canonical,
-      languages: { en: 'https://don-va.com/en', de: 'https://don-va.com/ge' },
+      languages: { en: 'https://don-seo.com/en', de: 'https://don-seo.com/ge' },
     },
     openGraph: {
       title,
@@ -68,7 +69,7 @@ const pageJsonLd = {
     description: "Pre-vetted, German-speaking virtual assistants for 80% less than local hires.",
     areaServed: "Worldwide",
     availableLanguage: ["English", "German"],
-    url: "https://don-va.com/en",
+    url: "https://don-seo.com/en",
   },
   ge: {
     "@context": "https://schema.org",
@@ -78,7 +79,7 @@ const pageJsonLd = {
     description: "Geprüfte, deutschsprachige virtuelle Assistenten für 80% weniger als lokale Einstellungen.",
     areaServed: "Worldwide",
     availableLanguage: ["Deutsch", "Englisch"],
-    url: "https://don-va.com/ge",
+    url: "https://don-seo.com/ge",
   },
 };
 
@@ -105,10 +106,10 @@ export default async function HomeLangPage({
       />
       <Navbar />
       <main id="main-content">
-        <div className="px-[50px] max-sm:px-4">
+        <div className={SPACING.container}>
           <Hero />
         </div>
-        <HomeBelowFold lang={lang} />
+        <HomeBelowFold />
       </main>
     </div>
   );

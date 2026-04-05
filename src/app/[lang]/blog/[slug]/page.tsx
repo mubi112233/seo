@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { fetchApiData, API_ENDPOINTS, normalizeLanguage } from "@/lib/api";
 import BlogPostClient from "./BlogPostClient";
+import { generateBlogStructuredData } from "@/lib/structured-data";
 
 interface BlogPost {
   blogId: number;
@@ -72,5 +73,23 @@ export default async function BlogPostPage({
 
   if (!post) notFound();
 
-  return <BlogPostClient post={post} lang={lang} />;
+  const structuredData = generateBlogStructuredData({
+    title: post.title,
+    description: post.excerpt,
+    author: post.author,
+    publishedAt: post.date,
+    updatedAt: post.date,
+    image: post.image,
+    url: `https://don-seo.com/${lang}/blog/${slug}`,
+  });
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <BlogPostClient post={post} lang={lang} />
+    </>
+  );
 }

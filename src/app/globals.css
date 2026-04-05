@@ -8,136 +8,123 @@
  * If your IDE shows warnings, these can be safely ignored or configure your CSS validator.
  */
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    /* Premium Black & Gold Theme */
+    /* SEO Agency Blue Theme (Light, professional) */
     --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
+    --foreground: 0 0% 0%; /* Black text as requested */
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 0%;
+    --card-foreground: 0 0% 0%; /* Black text */
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
+    --popover-foreground: 0 0% 0%; /* Black text */
 
-    --primary: 0 0% 0%;
+    --primary: 220 100% 50%; /* Bright blue for highlights */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 96%;
+    --secondary: 220 15% 96%;
     --secondary-foreground: 0 0% 0%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 220 13% 97%;
+    --muted-foreground: 220 10% 40%;
 
-    --accent: 45 75% 52%;
-    --accent-foreground: 0 0% 0%;
+    --accent: 220 100% 50%; /* Blue accent for highlights */
+    --accent-foreground: 0 0% 100%;
+
+    --hover: 220 15% 93%;
+    --hover-foreground: 0 0% 0%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 45 75% 52%;
+    --border: 220 13% 86%;
+    --input: 220 13% 86%;
+    --ring: 220 100% 50%;
 
     --radius: 0.5rem;
 
-    /* Custom tokens */
-    --gold: 45 75% 52%;
-    --gold-dark: 45 75% 42%;
-    --gold-light: 45 75% 62%;
-    
-    /* Design System Variables */
-    --color-primary: hsl(var(--gold));
-    --color-secondary: hsl(var(--gold-dark));
-    --color-accent: hsl(var(--gold-light));
-    --color-gold: hsl(var(--gold));
-    --color-gold-light: hsl(var(--gold-light));
-    --color-gold-dark: hsl(var(--gold-dark));
-    
-    /* Spacing */
-    --spacing-xs: 0.25rem;
-    --spacing-sm: 0.5rem;
-    --spacing-md: 1rem;
-    --spacing-lg: 1.5rem;
-    --spacing-xl: 2rem;
-    --spacing-xxl: 3rem;
-    
-    /* Border Radius */
-    --radius-sm: 0.25rem;
-    --radius-md: 0.5rem;
-    --radius-lg: 0.75rem;
-    --radius-xl: 1rem;
-    
-    /* Typography */
-    --font-sans: 'Inter', system-ui, sans-serif;
-    --font-display: 'Poppins', 'Inter', system-ui, sans-serif;
+    /* Custom tokens for SEO Agency */
+    --gold: 220 100% 50%;      /* Blue for highlights */
+    --gold-dark: 220 100% 40%; /* Darker blue */
+    --gold-light: 220 100% 60%; /* Lighter blue */
+    --brand-blue: 220 85% 25%; /* Dark blue for details */
     
     /* Gradients */
-    --gradient-gold: linear-gradient(135deg, hsl(45 75% 42%) 0%, hsl(45 75% 52%) 100%);
-    --gradient-dark: linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(0 0% 8%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(220 100% 50%) 0%, hsl(220 85% 25%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(220 85% 15%) 0%, hsl(220 85% 20%) 100%);
     
     /* Shadows */
-    --shadow-gold: 0 10px 40px -10px hsl(45 75% 52% / 0.5);
-    --shadow-gold-lg: 0 25px 80px -20px hsl(45 75% 52% / 0.6);
-    --shadow-elegant: 0 20px 60px -15px hsl(0 0% 0% / 0.3);
-    --shadow-brutal: 8px 8px 0px hsl(45 75% 52%);
+    --shadow-gold: 0 10px 40px -10px hsl(220 100% 50% / 0.3);
+    --shadow-gold-lg: 0 25px 80px -20px hsl(220 100% 50% / 0.4);
+    --shadow-elegant: 0 20px 60px -15px hsl(220 85% 25% / 0.3);
+    --shadow-brutal: 8px 8px 0px hsl(220 100% 50%);
     
     /* Transitions */
     --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-spring: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 220 15% 97%;
+    --sidebar-foreground: 0 0% 0%;
+    --sidebar-primary: 220 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 95%;
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: 220 13% 88%;
+    --sidebar-ring: 220 100% 50%;
+
+    /* Typographic + layout tokens */
+    --heading-color: 0 0% 0%; /* Black headings */
+    --heading-size: 1.5rem;
+    --side-padding: 1.5rem;
   }
 
   .dark {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    /* Enhanced SEO Agency Dark Mode */
+    --background: 220 85% 6%; /* Deeper dark blue background */
+    --foreground: 0 0% 98%; /* Softer white for better readability */
 
-    --card: 0 0% 5%;
-    --card-foreground: 0 0% 100%;
+    --card: 220 85% 10%; /* Slightly lighter cards for better contrast */
+    --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 5%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 220 85% 10%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 0%;
+    --primary: 220 100% 65%; /* Brighter blue for better visibility */
+    --primary-foreground: 220 85% 6%;
 
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 220 30% 18%; /* Better contrast for secondary elements */
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 220 30% 18%;
+    --muted-foreground: 220 15% 75%; /* Improved readability */
 
-    --accent: 45 75% 52%;
-    --accent-foreground: 0 0% 0%;
+    --accent: 220 100% 65%; /* Consistent with primary */
+    --accent-foreground: 220 85% 6%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 100%;
+    --hover: 220 35% 22%; /* More pronounced hover states */
+    --hover-foreground: 0 0% 98%;
 
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 45 75% 52%;
+    --destructive: 350 84% 55%; /* Slightly brighter for visibility */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 25% 28%; /* Better border visibility */
+    --input: 220 25% 28%;
+    --ring: 220 100% 65%;
     
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 220 85% 8%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 220 100% 65%;
+    --sidebar-primary-foreground: 220 85% 6%;
+    --sidebar-accent: 220 30% 18%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 220 25% 28%;
+    --sidebar-ring: 220 100% 65%;
+
+    --heading-color: 0 0% 98%;
+    --brand-blue: 220 100% 75%; /* Even brighter for dark theme visibility */
+    --gold: 220 100% 65%; /* Consistent blue highlights */
   }
 }
 
@@ -145,18 +132,76 @@ All colors MUST be HSL.
   * {
     @apply border-border;
     scroll-behavior: smooth;
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
   }
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    transition: background-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: hsl(var(--heading-color));
+    transition: color 0.3s ease;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
-    @apply font-bold;
-    text-align: left !important;
+  /* Enhanced dark mode transitions */
+  .dark {
+    color-scheme: dark;
   }
+
+  /* Improved scrollbar for dark mode */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--gold));
+  }
+
+  /* Enhanced focus states */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--gold));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Smooth animations for all interactive elements */
+  button, a, [role="button"] {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* Enhanced backdrop blur support */
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .backdrop-blur-lg {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .backdrop-blur-xl {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+
 }
 
 @layer components {
@@ -211,6 +256,11 @@ All colors MUST be HSL.
   .scrollbar-hide {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+  }
+
+  .app-shell {
+    padding-left: var(--side-padding);
+    padding-right: var(--side-padding);
   }
 
   /* Skip to main content — accessibility + SEO */

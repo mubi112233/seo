@@ -6,8 +6,13 @@
  */
 
 // API Configuration
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || 'https://api.don-va.com';
-const TENANT_ID = process.env.NEXT_PUBLIC_TENANT_ID || '';
+const getApiBase = () =>
+  process.env.NEXT_PUBLIC_API_BASE ||
+  'https://api.don-va.com';
+
+const getTenantId = () =>
+  process.env.NEXT_PUBLIC_TENANT_ID ||
+  'socal_media_agency';
 
 /**
  * Creates fetch options with proper headers including X-Tenant-ID
@@ -17,7 +22,7 @@ export function createFetchOptions(options: RequestInit = {}): RequestInit {
 
   // Inject X-Tenant-ID if it's not already there
   if (!headers.has('X-Tenant-ID')) {
-    headers.set('X-Tenant-ID', TENANT_ID);
+    headers.set('X-Tenant-ID', getTenantId());
   }
 
   // Set default content-type if not present and body exists
@@ -39,7 +44,7 @@ export async function fetchAPI(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<Response> {
-  const url = endpoint.startsWith('http') ? endpoint : `${API_BASE}${endpoint}`;
+  const url = endpoint.startsWith('http') ? endpoint : `${getApiBase()}${endpoint}`;
   const fetchOptions = createFetchOptions(options);
 
   return fetch(url, fetchOptions);
@@ -53,7 +58,7 @@ export async function fetchAPIClient(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<Response> {
-  const url = endpoint.startsWith('http') ? endpoint : `${API_BASE}${endpoint}`;
+  const url = endpoint.startsWith('http') ? endpoint : `${getApiBase()}${endpoint}`;
   const fetchOptions = createFetchOptions(options);
 
   return fetch(url, fetchOptions);

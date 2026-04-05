@@ -24,19 +24,24 @@ export const useDesignSystem = () => {
 
 export const DesignSystemProvider: React.FC<{ children: React.ReactNode; defaultTheme?: ThemeScheme }> = ({ 
   children, 
-  defaultTheme = 'gold' 
+  defaultTheme = 'blue' 
 }) => {
   const siteTheme = process.env.NEXT_PUBLIC_SITE_THEME as ThemeScheme | undefined;
   const initialTheme = siteTheme && colorSchemes[siteTheme] ? siteTheme : defaultTheme;
   const [theme, setThemeState] = useState<ThemeScheme>(initialTheme);
   
-  // Load theme from localStorage on mount
+  // Load theme from localStorage on mount (but prioritize defaultTheme for now)
   useEffect(() => {
     const savedTheme = localStorage.getItem('design-theme') as ThemeScheme;
-    if (savedTheme && colorSchemes[savedTheme]) {
+    // Temporarily force default theme to ensure color scheme change takes effect
+    if (savedTheme && colorSchemes[savedTheme] && savedTheme !== defaultTheme) {
+      // Clear old theme and set to new default
+      localStorage.removeItem('design-theme');
+      setThemeState(defaultTheme);
+    } else if (savedTheme && colorSchemes[savedTheme]) {
       setThemeState(savedTheme);
     }
-  }, []);
+  }, [defaultTheme]);
 
   const setTheme = (newTheme: ThemeScheme) => {
     setThemeState(newTheme);

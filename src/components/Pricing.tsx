@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { SPACING } from "@/lib/constants";
 import { getCopy } from "@/lib/copy";
+import { siteConfig, localizedPath } from "@/lib/site-config";
 
 // Constants
 const MAX_VA_COUNT = 10;
@@ -196,10 +197,10 @@ export const Pricing = () => {
                   transition={{ delay: 0.4 }}
                 >
                   <Button
-                    variant="gold"
+                    variant="default"
                     size="lg"
-                    onClick={() => window.location.href = '/book-meeting'}
-                    className="group relative text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 h-auto font-bold shadow-2xl hover:shadow-gold/50 transition-all duration-300 hover:scale-105 whitespace-nowrap"
+                    onClick={() => window.location.href = localizedPath(currentLang as "en" | "ge", siteConfig.routes.bookMeeting)}
+                    className="group relative text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 h-auto font-bold shadow-2xl hover:shadow-primary/50 transition-all duration-300 hover:scale-105 whitespace-nowrap"
                   >
                     <span className="relative z-10 flex items-center gap-2">
                       <Calendar className="w-5 h-5 group-hover:rotate-12 transition-transform" />
@@ -361,7 +362,7 @@ export const Pricing = () => {
               {/* Animated gradient border for highlighted plan */}
               {plan.highlighted && (
                 <motion.div
-                  className="absolute -inset-0.5 bg-gradient-to-r from-gold via-yellow-400 to-amber-500 rounded-2xl"
+                  className="absolute -inset-0.5 bg-gradient-to-r from-primary via-primary/90 to-primary rounded-2xl"
                   animate={{
                     backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
                   }}
@@ -376,13 +377,13 @@ export const Pricing = () => {
               
               <div className={`relative rounded-2xl p-6 sm:p-8 md:p-10 transition-all duration-500 group h-full ${
                 plan.highlighted 
-                  ? 'bg-gradient-to-br from-gold/95 via-gold/98 to-amber-500 text-foreground shadow-[0_25px_70px_-15px_hsl(45_75%_52%/0.5)]' 
-                  : 'bg-card border-2 border-border/60 hover:border-gold/80 hover:shadow-[0_25px_70px_-15px_hsl(45_75%_52%/0.4)]'
+                  ? 'bg-gradient-to-br from-primary/95 via-primary/98 to-primary text-foreground shadow-[0_25px_70px_-15px_hsl(220_100%_50%/0.5)]' 
+                  : 'bg-card border-2 border-border/60 hover:border-primary/80 hover:shadow-[0_25px_70px_-15px_hsl(220_100%_50%/0.4)]'
               }`}>
                 {/* Top accent line with animation */}
                 <motion.div 
                   className={`absolute top-0 left-0 right-0 h-1 rounded-t-2xl ${
-                    plan.highlighted ? 'bg-foreground/20' : 'bg-gradient-to-r from-transparent via-gold to-transparent'
+                    plan.highlighted ? 'bg-foreground/20' : 'bg-gradient-to-r from-transparent via-primary to-transparent'
                   }`}
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
@@ -391,7 +392,7 @@ export const Pricing = () => {
                 
                 {localizedBadge && (
                   <motion.div 
-                    className="absolute -top-4 right-6 bg-gradient-to-r from-foreground to-foreground/95 text-gold px-4 py-1.5 rounded-full text-xs font-bold shadow-xl flex items-center gap-1.5 border border-gold/20"
+                    className="absolute -top-4 right-6 bg-gradient-to-r from-foreground to-foreground/95 text-primary px-4 py-1.5 rounded-full text-xs font-bold shadow-xl flex items-center gap-1.5 border border-primary/20"
                     initial={{ y: -10, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.5 }}
@@ -493,7 +494,7 @@ export const Pricing = () => {
                 <Button 
                   variant={plan.highlighted ? "default" : "outline"}
                   size="lg"
-                  onClick={() => window.location.href = '/book-meeting'}
+                  onClick={() => window.location.href = localizedPath(currentLang as "en" | "ge", siteConfig.routes.bookMeeting)}
                   className={`w-full relative z-10 font-bold text-base py-6 sm:py-7 rounded-xl transition-all duration-300 group/btn overflow-hidden min-h-[44px] ${
                     plan.highlighted 
                       ? 'bg-foreground text-gold hover:bg-foreground/95 shadow-lg hover:shadow-xl hover:scale-105' 

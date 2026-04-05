@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Moon, Sun, Menu, X, Globe, User, Calendar, Phone } from "lucide-react";
 import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
+import { siteConfig, normalizeLocale, localizedPath } from "@/lib/site-config";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,6 +16,7 @@ export const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const router = useRouter();
   const pathname = usePathname();
+  const siteLocale = normalizeLocale(pathname);
 
   useEffect(() => { setMounted(true); }, []);
 
@@ -116,16 +118,16 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-16 sm:h-18 md:h-[72px] lg:h-20">
           {/* Logo */}
           <motion.button
-            onClick={() => router.push(currentLang === "de" ? "/ge" : "/en")}
+            onClick={() => router.push(`/${siteLocale}`)}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex items-center space-x-2 sm:space-x-3 hover:bg-gold/10 rounded-lg px-2 py-1 transition-all duration-300"
           >
             <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-9 md:h-9 lg:w-10 lg:h-10 bg-gold rounded-lg flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110">
-              <span className="text-black font-bold text-base sm:text-lg md:text-lg lg:text-xl">D</span>
+              <span className="text-black font-bold text-base sm:text-lg md:text-lg lg:text-xl">{siteConfig.brandMarkText}</span>
             </div>
-            <span className="text-lg sm:text-xl md:text-xl lg:text-2xl font-bold text-foreground hover:text-gold transition-colors duration-300">Don Va</span>
+            <span className="text-lg sm:text-xl md:text-xl lg:text-2xl font-bold text-foreground hover:text-gold transition-colors duration-300">{siteConfig.brandName}</span>
           </motion.button>
 
           {/* Desktop Nav */}
@@ -189,7 +191,7 @@ export const Navbar = () => {
             >
               <button
                 onClick={() => {
-                  router.push(currentLang === "de" ? "/ge/contact" : "/en/contact");
+                  router.push(localizedPath(siteLocale, siteConfig.routes.contact));
                 }}
                 className="text-sm md:text-sm lg:text-base px-4 md:px-4 lg:px-6 py-2 md:py-2 lg:py-2 border border-border/60 text-foreground rounded-lg hover:bg-gold/10 hover:text-gold transition-all duration-300 font-semibold whitespace-nowrap"
               >
@@ -204,7 +206,7 @@ export const Navbar = () => {
             >
               <button
                 onClick={() => {
-                  router.push(currentLang === "de" ? "/ge/book-meeting" : "/en/book-meeting");
+                  router.push(localizedPath(siteLocale, siteConfig.routes.bookMeeting));
                 }}
                 className="text-sm md:text-sm lg:text-base px-4 md:px-4 lg:px-7 py-2 md:py-2 lg:py-2.5 bg-gold text-black rounded-lg hover:shadow-lg hover:shadow-gold/30 transition-all duration-300 hover:scale-105 font-semibold whitespace-nowrap"
               >

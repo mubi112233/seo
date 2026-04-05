@@ -3,20 +3,20 @@
  */
 
 export const SPACING = {
-  // Horizontal padding for containers (150px side spacing)
-  container: "px-[150px]",
+  // Horizontal padding for containers (match frontend / Next Navbar)
+  container: "px-4 sm:px-6 md:px-6 lg:px-10 xl:px-12",
   
-  // Additional 150px space around all components
-  wrapper: "px-[150px]",
+  // Wrapper padding (same as container)
+  wrapper: "px-4 sm:px-6 md:px-6 lg:px-10 xl:px-12",
   
-  // Combined: 150px + React spacing
-  containerWithSpace: "px-[150px] px-4 sm:px-6 md:px-8 lg:px-4",
+  // Combined spacing (kept for compatibility with existing usage)
+  containerWithSpace: "px-4 sm:px-6 md:px-6 lg:px-10 xl:px-12",
   
-  // Side margins for sections (creates space around components)
-  sectionMargin: "mx-4 sm:mx-6 md:mx-8 lg:mx-4",
+  // Side margins for sections
+  sectionMargin: "mx-4 sm:mx-6 md:mx-6 lg:mx-10 xl:mx-12",
   
-  // 150px side margins only
-  sideMargin: "mx-[150px]",
+  // Side margins only
+  sideMargin: "mx-4 sm:mx-6 md:mx-6 lg:mx-10 xl:mx-12",
   
   // Vertical padding for sections
   section: "py-8 sm:py-10 md:py-12 lg:py-14",

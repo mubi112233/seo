@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { SPACING } from "@/lib/constants";
+import { siteConfig, normalizeLocale, localizedPath } from "@/lib/site-config";
 
 export const Footer: React.FC = () => {
   const pathname = usePathname();
-  const isGe = pathname.startsWith("/ge") || pathname.startsWith("/de");
-  const lang = isGe ? "ge" : "en";
+  const lang = normalizeLocale(pathname);
+  const isGe = lang === "ge";
 
   const links = {
     en: {
@@ -67,21 +69,21 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="w-full bg-card border-t border-border/50 mt-8">
-      <div className="container mx-auto px-[50px] max-sm:px-4 py-12 sm:py-16">
+      <div className={`container mx-auto ${SPACING.container} py-12 sm:py-16`}>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href={`/${lang}`} className="flex items-center gap-2 mb-4 group">
               <div className="w-9 h-9 bg-gold rounded-lg flex items-center justify-center">
-                <span className="text-black font-black text-lg">D</span>
+                <span className="text-black font-black text-lg">{siteConfig.brandMarkText}</span>
               </div>
-              <span className="text-xl font-bold text-foreground group-hover:text-gold transition-colors">Don Va</span>
+              <span className="text-xl font-bold text-foreground group-hover:text-gold transition-colors">{siteConfig.brandName}</span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed mb-4">{c.tagline}</p>
             <Link
-              href={`/${lang}/book-meeting`}
-              className="inline-block px-5 py-2.5 bg-gold text-black text-sm font-bold rounded-lg hover:bg-yellow-500 transition-colors"
+              href={localizedPath(lang, siteConfig.routes.bookMeeting)}
+              className="inline-block px-5 py-2.5 bg-gold text-black text-sm font-bold rounded-lg hover:bg-primary transition-colors"
             >
               {isGe ? "Jetzt starten" : "Get Started"}
             </Link>
@@ -134,9 +136,9 @@ export const Footer: React.FC = () => {
         <div className="mt-10 pt-6 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
           <p>© {new Date().getFullYear()} Don Va. {c.rights}</p>
           <div className="flex items-center gap-4">
-            <Link href={`/${lang}/blog`} className="hover:text-gold transition-colors">Blog</Link>
-            <Link href={`/${lang}/contact`} className="hover:text-gold transition-colors">{isGe ? "Kontakt" : "Contact"}</Link>
-            <Link href={`/${lang}/book-meeting`} className="hover:text-gold transition-colors">{isGe ? "Meeting buchen" : "Book Meeting"}</Link>
+            <Link href={localizedPath(lang, siteConfig.routes.blog)} className="hover:text-gold transition-colors">Blog</Link>
+            <Link href={localizedPath(lang, siteConfig.routes.contact)} className="hover:text-gold transition-colors">{isGe ? "Kontakt" : "Contact"}</Link>
+            <Link href={localizedPath(lang, siteConfig.routes.bookMeeting)} className="hover:text-gold transition-colors">{isGe ? "Meeting buchen" : "Book Meeting"}</Link>
           </div>
         </div>
       </div>

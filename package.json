@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "preview": "next start -p 3001",
-    "lint": "next lint"
+    "lint": "next lint",
+    "theme:generate": "node scripts/generate-theme.js"
   },
   "engines": {
     "node": ">=18.18.0"

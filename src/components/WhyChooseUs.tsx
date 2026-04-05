@@ -162,7 +162,7 @@ const pathname = usePathname();
               </div>
               
               {/* Corner decoration */}
-              <div className="absolute bottom-0 right-0 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 border-b-2 border-r-2 border-gold/0 group-hover:border-gold/50 rounded-br-xl sm:rounded-br-2xl transition-all duration-700" />
+              <div className="absolute bottom-0 right-0 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-br-xl sm:rounded-br-2xl transition-all duration-700" />
             </motion.div>
             );
           })}

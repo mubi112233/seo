@@ -107,7 +107,7 @@ export const ToolsIntegration = () => {
 
           {/* Callout */}
           <motion.div
-            className="bg-card border-2 border-gold/30 rounded-lg sm:rounded-xl p-5 sm:p-6 md:p-8 text-center"
+            className="bg-card rounded-lg sm:rounded-xl p-5 sm:p-6 md:p-8 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

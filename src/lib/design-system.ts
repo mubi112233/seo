@@ -130,17 +130,17 @@ export const colorSchemes = {
     },
   },
   
-  // Blue Theme
+  // Blue Theme (SEO Agency - matching frontend)
   blue: {
     ...defaultDesignTokens,
     colors: {
       ...defaultDesignTokens.colors,
-      primary: 'hsl(217, 91%, 60%)',
-      secondary: 'hsl(217, 91%, 50%)',
-      accent: 'hsl(217, 91%, 70%)',
-      gold: 'hsl(217, 91%, 60%)', // Renamed but still primary
-      goldLight: 'hsl(217, 91%, 70%)',
-      goldDark: 'hsl(217, 91%, 50%)',
+      primary: 'hsl(220, 100%, 50%)', // Bright blue for highlights
+      secondary: 'hsl(220, 15%, 96%)',
+      accent: 'hsl(220, 100%, 50%)', // Blue accent for highlights
+      gold: 'hsl(220, 100%, 50%)', // Blue for highlights
+      goldLight: 'hsl(220, 100%, 60%)', // Lighter blue
+      goldDark: 'hsl(220, 100%, 40%)', // Darker blue
     },
   },
   

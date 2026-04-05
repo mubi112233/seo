@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { fetchBlog, fetchCaseStudies, normalizeLanguage } from "@/lib/api";
 
-const base = "https://don-va.com";
+const base = "https://don-seo.com";
 
 const slugify = (title: string) =>
   title.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-").replace(/-+/g, "-").trim();
@@ -30,15 +30,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     blogRoutes = [
       ...enPosts.map((p: any) => ({
         url: `${base}/en/blog/${p.slug || `${slugify(p.title)}-${p.blogId}`}`,
-        lastModified: p.publishedAt ? new Date(p.publishedAt) : now,
-        changeFrequency: "monthly" as const,
-        priority: 0.6,
+        lastModified: p.publishedAt || p.updatedAt ? new Date(p.publishedAt || p.updatedAt) : now,
+        changeFrequency: "weekly" as const,
+        priority: 0.8,
       })),
       ...gePosts.map((p: any) => ({
         url: `${base}/ge/blog/${p.slug || `${slugify(p.title)}-${p.blogId}`}`,
-        lastModified: p.publishedAt ? new Date(p.publishedAt) : now,
-        changeFrequency: "monthly" as const,
-        priority: 0.6,
+        lastModified: p.publishedAt || p.updatedAt ? new Date(p.publishedAt || p.updatedAt) : now,
+        changeFrequency: "weekly" as const,
+        priority: 0.8,
       })),
     ];
   } catch {}
@@ -55,15 +55,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     caseRoutes = [
       ...enStudies.map((s: any) => ({
         url: `${base}/en/case-study/${slugify(s.title)}-${s.caseStudyId}`,
-        lastModified: now,
+        lastModified: s.updatedAt ? new Date(s.updatedAt) : now,
         changeFrequency: "monthly" as const,
-        priority: 0.6,
+        priority: 0.7,
       })),
       ...geStudies.map((s: any) => ({
         url: `${base}/ge/case-study/${slugify(s.title)}-${s.caseStudyId}`,
-        lastModified: now,
+        lastModified: s.updatedAt ? new Date(s.updatedAt) : now,
         changeFrequency: "monthly" as const,
-        priority: 0.6,
+        priority: 0.7,
       })),
     ];
   } catch {}

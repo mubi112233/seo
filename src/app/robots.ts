@@ -5,11 +5,11 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/"],
+        allow: ["/", "/en", "/ge", "/blog", "/case-study", "/book-meeting", "/contact"],
+        disallow: ["/api/", "/admin/", "/_next/", "/static/"],
       },
     ],
-    sitemap: "https://don-va.com/sitemap.xml",
-    host: "https://don-va.com",
+    sitemap: "https://don-seo.com/sitemap.xml",
+    host: "https://don-seo.com",
   };
 }

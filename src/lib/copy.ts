@@ -11,6 +11,28 @@ export const copy = {
       badge: "How It Works",
       heading: "Get started in <span class=\"text-gold\">4 simple steps</span>",
       description: "From onboarding to measurable results — our process is designed to be fast, clear, and efficient.",
+      steps: {
+        step1: {
+          step: "Step 1",
+          title: "Initial Consultation",
+          description: "We discuss your needs and goals to create a customized plan for your virtual assistant."
+        },
+        step2: {
+          step: "Step 2", 
+          title: "VA Matching & Onboarding",
+          description: "We match you with the perfect virtual assistant and handle all onboarding processes."
+        },
+        step3: {
+          step: "Step 3",
+          title: "Integration & Training",
+          description: "Your VA integrates with your team and receives specific training on your workflows."
+        },
+        step4: {
+          step: "Step 4",
+          title: "Ongoing Support & Growth",
+          description: "Continuous quality control and support to ensure optimal performance and scaling."
+        }
+      }
     },
 
     // Why Choose Us (fallback, API may provide its own)
@@ -76,6 +98,62 @@ export const copy = {
       sectionBadge: "Pricing",
       sectionTitle: "Simple, transparent pricing",
       sectionDescription: "Choose a plan and number of VAs that fits your needs. Scale up or down anytime.",
+      vaCountLabel: "How many VAs do you need?",
+      vaCountHelper: "Select the number of virtual assistants",
+      startingFrom: "Starting from €{price}/mo · ~€{hourly}/hr",
+      bulkDiscount: "{percent}% bulk discount applied!",
+      bulkSavings: "You save €{amount} total",
+      bulkHint: "Add {count} more VA{suffix} to unlock {percent}% bulk discount",
+      bannerBadge: "Limited Time",
+      bannerTitle: "Book a Free Meeting",
+      bannerSubtitle: "Schedule your free consultation and get started today",
+      bannerPoints: {
+        noCommitment: "No commitment",
+        cancelAnytime: "Cancel anytime",
+        fullAccess: "Full access"
+      },
+      plans: {
+        starter: {
+          name: "Starter",
+          hours: "10h / week",
+          features: [
+            "Dedicated VA",
+            "Native Quality Control",
+            "24h Replacement Guarantee",
+            "Slack/Email Support",
+            "14 Days Money-Back Warranty"
+          ]
+        },
+        professional: {
+          name: "Professional",
+          hours: "20h / week",
+          features: [
+            "Everything in Starter",
+            "No Setup Fee",
+            "Priority Support",
+            "Bi-weekly Progress Reports",
+            "Flexible Hour Rollover"
+          ]
+        },
+        enterprise: {
+          name: "Enterprise",
+          hours: "40h / week",
+          badge: "Best Value",
+          features: [
+            "Everything in Professional",
+            "No Setup Fee",
+            "Dedicated Account Manager",
+            "Weekly Strategy Calls",
+            "Custom Workflow Integration"
+          ]
+        }
+      },
+      button: "Get Started",
+      perMonth: "/mo",
+      hoursUnit: "hours",
+      planSetupFee: "+€{fee} setup fee",
+      planNoSetupFee: "No setup fee",
+      disclaimer: "All prices are per VA. Bulk discounts apply automatically. Setup fees are one-time charges."
     },
 
     // Final CTA
@@ -97,6 +175,28 @@ export const copy = {
       badge: "Wie es funktioniert",
       heading: "Starten Sie in <span class=\"text-gold\">4 einfachen Schritten</span>",
       description: "Vom Onboarding bis zu messbaren Ergebnissen – unser Prozess ist schnell, klar und effizient.",
+      steps: {
+        step1: {
+          step: "Schritt 1",
+          title: "Erstberatung",
+          description: "Wir besprechen Ihre Bedürfnisse und Ziele, um einen maßgeschneiderten Plan für Ihren virtuellen Assistenten zu erstellen."
+        },
+        step2: {
+          step: "Schritt 2",
+          title: "VA-Vermittlung & Onboarding",
+          description: "Wir vermitteln Ihnen den perfekten virtuellen Assistenten und übernehmen alle Onboarding-Prozesse."
+        },
+        step3: {
+          step: "Schritt 3",
+          title: "Integration & Schulung",
+          description: "Ihr VA integriert sich in Ihr Team und erhält spezifisches Training für Ihre Workflows."
+        },
+        step4: {
+          step: "Schritt 4",
+          title: "Kontinuierliche Unterstützung & Wachstum",
+          description: "Durchgehende Qualitätskontrolle und Unterstützung für optimale Leistung und Skalierung."
+        }
+      }
     },
 
     // Why Choose Us (fallback, API may provide its own)

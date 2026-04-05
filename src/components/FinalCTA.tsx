@@ -6,8 +6,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { SPACING } from "@/lib/constants";
 import { usePathname } from "next/navigation";
-
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || 'https://api.don-va.com';
+import { siteConfig, normalizeLocale, localizedPath, getWhatsAppUrl } from "@/lib/site-config";
 
 const fallbackCopy = {
   en: {
@@ -72,14 +71,14 @@ interface FinalCTAData {
 
 export const FinalCTA = () => {
   const pathname = usePathname();
-  const currentLang = pathname.startsWith('/ge') || pathname.startsWith('/de') ? 'ge' : 'en';
+  const currentLang = normalizeLocale(pathname);
   const [apiData, setApiData] = useState<FinalCTAData | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`${API_BASE}/api/final-cta?lang=${currentLang}`);
+        const res = await fetch(`${siteConfig.apiBase}/api/final-cta?lang=${currentLang}`);
         if (!res.ok) throw new Error("fetch failed");
         const data = await res.json();
         setApiData(data.finalCta || null);
@@ -102,9 +101,9 @@ export const FinalCTA = () => {
   const stats = apiData?.stats || fb.stats;
   const trust = apiData?.trust || fb.trust;
   const primaryCta = apiData?.ctas?.primaryLabel || fb.primaryCta;
-  const primaryHref = apiData?.ctas?.primaryHref || `/${currentLang}/book-meeting`;
+  const primaryHref = apiData?.ctas?.primaryHref || localizedPath(currentLang, siteConfig.routes.bookMeeting);
   const secondaryCta = apiData?.ctas?.secondaryLabel || fb.secondaryCta;
-  const secondaryHref = apiData?.ctas?.secondaryHref || (apiData?.whatsAppNumber ? `https://wa.me/${apiData.whatsAppNumber}` : '#');
+  const secondaryHref = apiData?.ctas?.secondaryHref || getWhatsAppUrl(apiData?.whatsAppNumber || siteConfig.external.whatsappNumber) || "#";
 
   const statsItems = [
     { icon: Users, value: stats.activeClients, label: fb.statsLabels.activeClients },
@@ -115,7 +114,7 @@ export const FinalCTA = () => {
 
   if (loading) {
     return (
-      <section className="relative overflow-hidden py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-br from-gold via-amber-500 to-yellow-600 flex items-center justify-center">
+      <section className="relative overflow-hidden py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-br from-gold via-primary to-gold flex items-center justify-center">
         <Loader2 className="w-8 h-8 animate-spin text-white" />
       </section>
     );
@@ -123,7 +122,7 @@ export const FinalCTA = () => {
 
   return (
     <motion.section
-      className="relative overflow-hidden py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 bg-gradient-to-br from-gold via-amber-500 to-yellow-600"
+      className="relative overflow-hidden py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 bg-gradient-to-br from-gold via-primary to-gold"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -132,10 +131,10 @@ export const FinalCTA = () => {
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
         <motion.div className="absolute -top-20 -right-20 w-80 h-80 bg-white/10 rounded-full blur-3xl" animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} />
-        <motion.div className="absolute -bottom-16 -left-16 w-60 h-60 bg-amber-300/20 rounded-full blur-3xl" animate={{ scale: [1.2, 1, 1.2], opacity: [0.4, 0.2, 0.4] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }} />
+        <motion.div className="absolute -bottom-16 -left-16 w-60 h-60 bg-primary/20 rounded-full blur-3xl" animate={{ scale: [1.2, 1, 1.2], opacity: [0.4, 0.2, 0.4] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }} />
       </div>
 
-      <div className={`container mx-auto ${SPACING.container} relative z-10`}>
+      <div className="w-full px-0 relative z-10">
         <motion.div className="max-w-6xl mx-auto text-center" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2 }}>
 
           <motion.div className="flex justify-center mb-6 sm:mb-8" initial={{ scale: 0.8, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.3, type: "spring" }}>

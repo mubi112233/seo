@@ -68,7 +68,7 @@ export const ValueProposition = () => {
               </div>
               
               {/* Corner accent */}
-              <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-gold/0 group-hover:border-gold/50 rounded-tr-2xl transition-all duration-500" />
+              <div className="absolute top-0 right-0 w-16 h-16 rounded-tr-2xl transition-all duration-500" />
             </motion.div>
           ))}
         </div>
