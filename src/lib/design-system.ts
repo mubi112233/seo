@@ -215,9 +215,7 @@ export const getCSSVariables = (scheme: keyof typeof colorSchemes = 'gold') => {
 };
 
 // Utility classes generator
-export const generateUtilityClasses = (scheme: keyof typeof colorSchemes = 'gold') => {
-  const tokens = colorSchemes[scheme];
-  
+export const generateUtilityClasses = (_scheme: keyof typeof colorSchemes = 'gold') => {
   return {
     primary: 'bg-primary text-primary-foreground',
     secondary: 'bg-secondary text-secondary-foreground',

@@ -195,7 +195,7 @@ export const generateCSSVariables = () => {
   return vars;
 };
 
-export default {
+const themeConfig = {
   colorSchemes,
   currentTheme,
   theme,
@@ -203,3 +203,5 @@ export default {
   cssVar,
   generateCSSVariables
 };
+
+export default themeConfig;

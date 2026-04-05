@@ -337,7 +337,7 @@ export const copy = {
 /**
  * Helper to get copy for a language (en/ge)
  */
-export const getCopy = (lang: string, key: keyof typeof copy.en) => {
+export const getCopy = <K extends keyof typeof copy.en>(lang: string, key: K): typeof copy.en[K] => {
   const normalizedLang = lang.toLowerCase().startsWith('ge') || lang.toLowerCase().startsWith('de') ? 'ge' : 'en';
-  return copy[normalizedLang as keyof typeof copy][key] as any;
+  return copy[normalizedLang as keyof typeof copy][key];
 };

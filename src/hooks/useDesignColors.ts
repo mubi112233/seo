@@ -20,8 +20,6 @@ export const useDesignColors = () => {
 
 // CSS class generator for dynamic colors
 export const useColorClasses = () => {
-  const { theme } = useDesignSystem();
-  
   const baseClasses = {
     'text-primary': 'text-primary',
     'text-secondary': 'text-secondary', 
