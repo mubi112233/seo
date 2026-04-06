@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Award, Loader2 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import * as LucideIcons from "lucide-react";
 import { fetchWhyChooseUs } from "@/lib/api";
 import { SPACING } from "@/lib/constants";
@@ -36,7 +36,7 @@ export const WhyChooseUs = () => {
 
   const isGe = currentLang === 'ge';
 
-  const fallbackData: WhyChooseUsData = isGe ? {
+  const fallbackData: WhyChooseUsData = useMemo(() => isGe ? {
     badge: "Warum wir",
     heading: "Was uns <span class=\"text-gold\">auszeichnet</span>",
     description: "Deutschsprachige Talente, native Qualitätskontrolle, schnelles Onboarding und eine Null‑Risiko‑Garantie.",
@@ -60,7 +60,7 @@ export const WhyChooseUs = () => {
       { icon: "TrendingUp", title: "Scalable Solutions", description: "Easily scale up or down based on your business needs without the overhead of traditional hiring." },
       { icon: "Award", title: "Proven Track Record", description: "Trusted by 200+ businesses with a 95% client satisfaction rate." },
     ]
-  };
+  }, [isGe]);
 
   // Fetch Why Choose Us data from API
   useEffect(() => {
@@ -76,7 +76,7 @@ export const WhyChooseUs = () => {
       }
     };
     fetchWhyChooseUsData();
-  }, []);
+  }, [currentLang, fallbackData]);
 
   if (loading) {
     return (

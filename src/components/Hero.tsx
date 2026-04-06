@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { motion, useInView, useScroll, useSpring, useTransform } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useMemo } from "react";
 import {
   ArrowRight,
   Calendar,
@@ -48,7 +48,7 @@ export const Hero = () => {
 
   const isGe = currentLang === "ge";
 
-  const fallbackData: HeroData = isGe
+  const fallbackData: HeroData = useMemo(() => isGe
     ? {
         title: "Skalieren Sie Ihr Unternehmen mit dedizierten virtuellen Assistenten",
         subtitle:
@@ -68,7 +68,7 @@ export const Hero = () => {
         ctaPrimary: "Get Started Today",
         urgency: "Limited Offer",
         stats: { clients: "200+", costSaved: "70%", rating: "4.9/5" },
-      };
+      }, [isGe]);
 
   const [heroData, setHeroData] = useState<HeroData | null>(fallbackData);
   const [loading, setLoading] = useState(false);
