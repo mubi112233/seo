@@ -49,7 +49,7 @@ export const Services = () => {
         } else {
           setServices([]);
         }
-      } catch (err) {
+      } catch {
         setError("Failed to load services");
         setServices([]);
       } finally {

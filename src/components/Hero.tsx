@@ -109,7 +109,7 @@ export const Hero = () => {
         abortControllerRef.current.abort();
       }
     };
-  }, [currentLang]);
+  }, [currentLang, fallbackData]);
 
   const title = heroData?.title || fallbackData.title;
   const subtitle = heroData?.subtitle || fallbackData.subtitle;

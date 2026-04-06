@@ -1,6 +1,5 @@
 import { Calendar, UserCheck, Rocket, LineChart } from "lucide-react";
 import { getCopy } from "@/lib/copy";
-import { SPACING } from "@/lib/constants";
 
 const steps = [
   { icon: Calendar, key: "step1" },

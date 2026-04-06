@@ -30,7 +30,6 @@ const getIconComponent = (iconName: string) => {
 export const WhyChooseUs = () => {
   const [whyChooseUsData, setWhyChooseUsData] = useState<WhyChooseUsData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   const pathname = usePathname();
   const currentLang = pathname.startsWith('/ge') || pathname.startsWith('/de') ? 'ge' : 'en';
@@ -68,11 +67,9 @@ export const WhyChooseUs = () => {
     const fetchWhyChooseUsData = async () => {
       try {
         setLoading(true);
-        setError(null);
         const data = await fetchWhyChooseUs(currentLang);
         setWhyChooseUsData(data || fallbackData);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Failed to load");
+      } catch {
         setWhyChooseUsData(fallbackData);
       } finally {
         setLoading(false);
