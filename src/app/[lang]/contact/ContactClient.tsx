@@ -48,23 +48,23 @@ type FormValues = {
 const translations: Record<string, Record<string, string>> = {
   en: {
     badge: "Get In Touch",
-    title: "Let's Find Your Perfect VA",
-    subtitle: "Tell us about your needs and we'll match you with the right virtual assistant within 48 hours.",
+    title: "Let's Improve Your SEO",
+    subtitle: "Tell us about your website and goals, and we'll create a custom SEO strategy within 48 hours.",
     email: "Email Address",
     phone: "Phone Number",
     mainServiceLabel: "Main Service Needed",
     mainServicePlaceholder: "Select a service",
     mainServiceOtherLabel: "Describe the service",
     mainServiceOtherPlaceholder: "Describe what you need...",
-    vaCountLabel: "How many VAs do you need?",
-    vaCountPlaceholder: "e.g. 2",
-    va1Label: "VA #1 — Background & Tasks",
-    va2IndustryLabel: "VA #2 — Industry",
-    va2Label: "VA #2 — Background & Tasks",
-    va3IndustryLabel: "VA #3 — Industry",
-    va3Label: "VA #3 — Background & Tasks",
-    va4IndustryLabel: "VA #4 — Industry",
-    va4Label: "VA #4 — Background & Tasks",
+    vaCountLabel: "Monthly budget (EUR)?",
+    vaCountPlaceholder: "e.g. 2000",
+    va1Label: "Website URL",
+    va2IndustryLabel: "Industry",
+    va2Label: "Current SEO challenges",
+    va3IndustryLabel: "Target market",
+    va3Label: "Goals & objectives",
+    va4IndustryLabel: "Competitors",
+    va4Label: "Additional information",
     otherTasksLabel: "Additional Notes",
     otherTasksPlaceholder: "Anything else you'd like us to know...",
     submit: "Send Message",
@@ -74,18 +74,18 @@ const translations: Record<string, Record<string, string>> = {
     phoneRequired: "Phone is required",
     phoneInvalid: "Enter a valid phone number",
     mainServiceRequired: "Please select a service",
-    vaCountRequired: "Please enter the number of VAs",
+    vaCountRequired: "Please enter your monthly budget",
     sideTitle: "Why Work With Us?",
     stat1Value: "200+",
     stat1Label: "Happy Clients",
-    stat2Value: "48h",
-    stat2Label: "Onboarding Time",
+    stat2Value: "340%",
+    stat2Label: "Avg. Traffic Growth",
     stat3Value: "4.9/5",
     stat3Label: "Average Rating",
-    feature1: "Pre-vetted, German-speaking VAs",
-    feature2: "Save up to 70% vs local hires",
-    feature3: "14-day money-back guarantee",
-    feature4: "Dedicated account manager",
+    feature1: "Data-driven SEO strategies",
+    feature2: "Technical SEO excellence",
+    feature3: "Transparent monthly reporting",
+    feature4: "Dedicated SEO account manager",
     responseTime: "We typically respond within 2 hours",
   },
   ge: {
@@ -188,7 +188,7 @@ export default function ContactClient({ lang }: { lang: string }) {
     const formData = new FormData();
     formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "8aff1902-6795-4608-ad79-be6702aa7f3a");
     formData.append("to", "patryk@dononlineagency.com");
-    formData.append("subject", "New contact request - Don Va");
+    formData.append("subject", "New contact request - DON SEO");
     formData.append("email", data.email);
     formData.append("phone", data.phone);
     formData.append("vaCount", data.vaCount);
@@ -294,7 +294,7 @@ export default function ContactClient({ lang }: { lang: string }) {
                 {[...Array(5)].map((_, i) => <Star key={i} className="w-3.5 h-3.5 text-gold fill-gold" />)}
               </div>
               <p className="text-sm text-muted-foreground italic leading-relaxed">
-                &ldquo;Don Va transformed our operations. We saved over €40k in the first year alone.&rdquo;
+                &ldquo;DON SEO transformed our rankings. We saw 340% traffic growth in the first year alone.&rdquo;
               </p>
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gold/30 to-gold/10 flex items-center justify-center">
@@ -434,7 +434,7 @@ export default function ContactClient({ lang }: { lang: string }) {
                         >
                           <div className="flex items-center gap-2">
                             <span className="w-6 h-6 rounded-full bg-gold text-black text-xs font-bold flex items-center justify-center">{n}</span>
-                            <span className="text-sm font-semibold text-foreground">Virtual Assistant #{n}</span>
+                            <span className="text-sm font-semibold text-foreground">SEO Requirement #{n}</span>
                           </div>
                           {n >= 2 && (
                             <div className="space-y-1.5">

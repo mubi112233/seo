@@ -70,10 +70,10 @@ export default function BookMeetingClient() {
               </motion.div>
               <div className="flex flex-col">
                 <span className="text-xl sm:text-2xl font-black bg-gradient-to-r from-foreground via-foreground to-foreground/90 bg-clip-text text-transparent group-hover:from-gold group-hover:to-yellow-600 transition-all duration-300">
-                  Don Va
+                  DON SEO
                 </span>
                 <span className="text-[10px] sm:text-xs text-gold/80 font-semibold -mt-1 tracking-wide">
-                  Premium VAs
+                  SEO Services
                 </span>
               </div>
             </motion.div>
@@ -231,7 +231,7 @@ export default function BookMeetingClient() {
               <ul className="space-y-3">
                 {[
                   "Your current operational challenges",
-                  "How VAs can fit into your workflow",
+                  "How SEO can improve your search visibility",
                   "Custom solutions for your business",
                   "Pricing & team structure options",
                   "Next steps to get started",
@@ -266,7 +266,7 @@ export default function BookMeetingClient() {
             <div className="lg:sticky lg:top-24">
               <div className="bg-card border border-border rounded-xl p-2 shadow-lg">
                 <iframe
-                  src="https://calendly.com/mmubasharshahzad40/new-meeting?embed_domain=don-va.com&embed_type=Inline"
+                  src="https://calendly.com/mmubasharshahzad40/new-meeting?embed_domain=don-seo.com&embed_type=Inline"
                   className="rounded-lg"
                   style={{ minWidth: "100%", height: "600px", border: "none" }}
                   title="Book a meeting"
@@ -293,26 +293,26 @@ export default function BookMeetingClient() {
             <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-foreground">
               What Our Clients Say
             </h2>
-            <p className="text-muted-foreground">See why businesses trust Don Va</p>
+            <p className="text-muted-foreground">See why businesses trust DON SEO</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
                 name: "Sarah Johnson",
                 role: "CEO, TechStart Inc",
-                text: "Don Va transformed our operations. The consultation was thorough and the onboarding was seamless.",
+                text: "DON SEO transformed our rankings. The consultation was thorough and the implementation was seamless.",
                 rating: 5,
               },
               {
                 name: "Michael Chen",
                 role: "Founder, Digital Growth",
-                text: "Best decision we made. Our VA has become an integral part of our team within weeks.",
+                text: "Best decision we made. Our organic traffic has grown significantly within weeks.",
                 rating: 5,
               },
               {
                 name: "Emma Davis",
                 role: "Director, MarketPro",
-                text: "Professional, reliable, and cost-effective. Couldn't ask for more from a VA service.",
+                text: "Professional, reliable, and results-driven. Couldn't ask for more from an SEO agency.",
                 rating: 5,
               },
             ].map((t, idx) => (

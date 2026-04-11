@@ -36,24 +36,24 @@ export const metadata: Metadata = {
     google: "l93HxOLqUBDjtuNfHM7OsWQd7i9MfSJo1fV_yaLAZrE",
   },
   title: {
-    default: "DON VA - Premium Virtual Assistants | Save 70% on Operations",
-    template: "%s | DON VA",
+    default: "DON SEO - Professional SEO Services | Grow Your Organic Traffic",
+    template: "%s | DON SEO",
   },
   description:
-    "Hire pre-vetted, German-speaking virtual assistants for 80% less than local hires. Scale your team in days, not months.",
+    "Professional SEO services for businesses in the DACH region. Technical SEO, content strategy, and link building to grow your organic traffic.",
   keywords: [
-    "virtual assistant",
-    "VA services",
-    "German speaking VA",
-    "remote assistant",
-    "business scaling",
-    "DON VA",
-    "virtuelle assistenz",
-    "deutschsprachiger VA",
+    "SEO services",
+    "search engine optimization",
+    "technical SEO",
+    "content strategy",
+    "link building",
+    "DON SEO",
+    "SEO Agentur",
+    "Suchmaschinenoptimierung",
   ],
-  authors: [{ name: "DON VA", url: SITE_URL }],
-  creator: "DON VA",
-  publisher: "DON VA",
+  authors: [{ name: "DON SEO", url: SITE_URL }],
+  creator: "DON SEO",
+  publisher: "DON SEO",
   formatDetection: {
     email: false,
     address: false,
@@ -72,20 +72,20 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    siteName: "DON VA",
-    title: "DON VA - Premium Virtual Assistants | Save 70% on Operations",
+    siteName: "DON SEO",
+    title: "DON SEO - Professional SEO Services | Grow Your Organic Traffic",
     description:
-      "Hire pre-vetted, German-speaking virtual assistants for 80% less than local hires.",
+      "Professional SEO services for businesses in the DACH region. Technical SEO, content strategy, and link building.",
     url: absoluteUrl("/en"),
     locale: "en_US",
     alternateLocale: ["de_DE"],
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "DON VA — Virtual assistant services" }],
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "DON SEO — Professional SEO Services" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DON VA - Premium Virtual Assistants | Save 70% on Operations",
+    title: "DON SEO - Professional SEO Services | Grow Your Organic Traffic",
     description:
-      "Hire pre-vetted, German-speaking virtual assistants for 80% less than local hires.",
+      "Professional SEO services for businesses in the DACH region. Technical SEO, content strategy, and link building.",
     images: [absoluteUrl("/og-image.jpg")],
   },
   alternates: {
@@ -101,11 +101,11 @@ export const metadata: Metadata = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "DON VA",
+  name: "DON SEO",
   url: SITE_URL,
   logo: absoluteUrl("/favicon.ico"),
   description:
-    "Pre-vetted, German-speaking virtual assistants for growing businesses in the DACH region and worldwide.",
+    "Professional SEO services for growing businesses in the DACH region and worldwide.",
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",
@@ -117,16 +117,16 @@ const organizationJsonLd = {
     { "@type": "Country", name: "Switzerland" },
     { "@type": "Place", name: "Worldwide" },
   ],
-  sameAs: ["https://linkedin.com/company/don-va", "https://twitter.com/don_va"],
+  sameAs: ["https://linkedin.com/company/don-seo", "https://twitter.com/don_seo"],
 };
 
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "DON VA",
+  name: "DON SEO",
   url: SITE_URL,
   inLanguage: ["en-US", "de-DE"],
-  publisher: { "@type": "Organization", name: "DON VA" },
+  publisher: { "@type": "Organization", name: "DON SEO" },
 };
 
 export default async function RootLayout({

@@ -50,9 +50,9 @@ export const Hero = () => {
 
   const fallbackData: HeroData = useMemo(() => isGe
     ? {
-        title: "Skalieren Sie Ihr Unternehmen mit dedizierten virtuellen Assistenten",
+        title: "Steigern Sie Ihre organische Sichtbarkeit mit professionellem SEO",
         subtitle:
-          "Stellen Sie geprüfte, deutschsprachige virtuelle Assistenten für 80% weniger als lokale Einstellungen ein. Skalieren Sie Ihr Team in Tagen, nicht Monaten.",
+          "Professionelle SEO-Dienstleistungen für Unternehmen in der DACH-Region. Technisches SEO, Content-Strategie und Link-Building für mehr Traffic.",
         tagline: "Von 200+ wachsenden Unternehmen vertraut",
         image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=900&fit=crop&q=80",
         ctaPrimary: "Jetzt starten",
@@ -60,9 +60,9 @@ export const Hero = () => {
         stats: { clients: "200+", costSaved: "70%", rating: "4.9/5" },
       }
     : {
-        title: "Scale Your Business with Dedicated Virtual Assistants",
+        title: "Grow Your Organic Traffic with Professional SEO Services",
         subtitle:
-          "Hire pre-vetted, German-speaking virtual assistants for 80% less than local hires. Scale your team in days, not months.",
+          "Professional SEO services for businesses in the DACH region. Technical SEO, content strategy, and link building to grow your traffic.",
         tagline: "Trusted by 200+ Growing Businesses",
         image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=900&fit=crop&q=80",
         ctaPrimary: "Get Started Today",
@@ -211,7 +211,7 @@ export const Hero = () => {
                   );
                 }}
                 className="group relative w-full sm:w-auto text-sm sm:text-base md:text-lg px-8 sm:px-10 md:px-12 py-5 sm:py-6 md:py-7 h-auto font-bold shadow-gold-lg transform hover:scale-[1.06] hover:-translate-y-2 transition-all duration-300 hover:brightness-110 cursor-pointer overflow-hidden rounded-xl border-2 border-transparent hover:border-yellow-400/30 text-foreground"
-                aria-label="Get started with Don VA virtual assistant services"
+                aria-label="Get started with Don SEO professional SEO services"
               >
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent"
@@ -297,7 +297,7 @@ export const Hero = () => {
               <motion.div style={{ transform: "translateZ(20px)" }}>
                 <Image
                   src={heroImage}
-                  alt={isGe ? "Virtueller Assistent am Arbeiten" : "Virtual Assistant Working"}
+                  alt={isGe ? "SEO-Optimierung am Arbeiten" : "SEO Optimization in Progress"}
                   width={1200}
                   height={900}
                   className="w-full h-auto object-cover"

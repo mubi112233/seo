@@ -6,7 +6,7 @@ import { fetchCaseStudiesServer } from "@/lib/api";
 import { getCopy } from "@/lib/copy";
 import { SPACING } from "@/lib/constants";
 import type { Metadata } from "next";
-import { absoluteUrl, hreflangAlternates, publicLocalePathSegment } from "@/lib/site-url";
+import { absoluteUrl, hreflangAlternates, publicLocalePathSegment, SITE_URL } from "@/lib/site-url";
 
 interface CaseStudyData {
   caseStudyId: number;
@@ -45,7 +45,7 @@ export async function generateMetadata({
 
   if (!caseStudy) return {};
 
-  const title = `${caseStudy.company} - ${caseStudy.title} | DON VA`;
+  const title = `${caseStudy.company} - ${caseStudy.title} | DON SEO`;
   const description = caseStudy.challenge.substring(0, 160);
   const pathAfterLocale = `case-study/${slug}`;
   const canonical = absoluteUrl(`/${urlSeg}/${pathAfterLocale}`);
@@ -54,12 +54,18 @@ export async function generateMetadata({
   return {
     title,
     description,
+    keywords: currentLang === "ge"
+      ? ["Fallstudie", "SEO Ergebnisse", caseStudy.company, caseStudy.industry, "DON SEO"]
+      : ["case study", "SEO results", caseStudy.company, caseStudy.industry, "DON SEO"],
     alternates: { canonical, languages },
     openGraph: {
       title,
       description,
       url: canonical,
       type: "article",
+      locale: urlSeg === "de" ? "de_DE" : "en_US",
+      alternateLocale: urlSeg === "de" ? "en_US" : "de_DE",
+      siteName: "DON SEO",
       images: caseStudy.image ? [{ url: caseStudy.image, width: 1200, height: 630, alt: caseStudy.company }] : [],
     },
     twitter: {
@@ -68,6 +74,7 @@ export async function generateMetadata({
       description,
       images: caseStudy.image ? [caseStudy.image] : [],
     },
+    robots: { index: true, follow: true },
   };
 }
 
@@ -96,8 +103,24 @@ export default async function CaseStudyPage({
     notFound();
   }
 
+  const caseStudyJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": caseStudy.title,
+    "description": caseStudy.challenge,
+    "author": { "@type": "Organization", "name": "DON SEO", "url": SITE_URL },
+    "publisher": { "@type": "Organization", "name": "DON SEO", "logo": { "@type": "ImageObject", "url": absoluteUrl("/og-image.jpg") } },
+    "image": caseStudy.image,
+    "url": absoluteUrl(`/${publicLocalePathSegment(lang)}/case-study/${slug}`),
+    "mainEntityOfPage": { "@type": "WebPage", "@id": absoluteUrl(`/${publicLocalePathSegment(lang)}/case-study/${slug}`) },
+  };
+
   return (
     <div className={`min-h-screen ${SPACING.sideMargin} bg-background`}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudyJsonLd) }}
+      />
       <article className="max-w-5xl mx-auto py-6 sm:py-8 md:py-12 px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <nav className="mb-4 sm:mb-6 text-xs sm:text-sm text-muted-foreground overflow-x-auto whitespace-nowrap">

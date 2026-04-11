@@ -14,29 +14,29 @@ export async function generateMetadata({
 
   const isDe = seg === "de";
   const title = isDe
-    ? "Blog — Tipps zu virtuellen Assistenten & Remote-Teams | DON VA"
-    : "Blog — Virtual Assistant Tips & Remote Work | DON VA";
+    ? "Blog — SEO Tipps & Suchmaschinenoptimierung | DON SEO"
+    : "Blog — SEO Tips & Search Engine Optimization | DON SEO";
   const description = isDe
-    ? "Einblicke, Tipps und Best Practices zu virtuellen Assistenten, Outsourcing und skalierbaren Teams — auf Deutsch."
-    : "Insights, tips, and best practices for virtual assistants, outsourcing, and scalable remote teams.";
+    ? "Einblicke, Tipps und Best Practices zu SEO, technischer Optimierung und Content-Strategie — auf Deutsch."
+    : "Insights, tips, and best practices for SEO, technical optimization, and content strategy.";
 
   return {
     title,
     description,
     keywords: isDe
       ? [
-          "virtuelle assistenz blog",
-          "virtueller assistent tipps",
-          "remote team deutsch",
-          "outsourcing VA",
-          "DON VA",
+          "SEO Blog",
+          "Suchmaschinenoptimierung Tipps",
+          "SEO deutsch",
+          "Content Strategie",
+          "DON SEO",
         ]
       : [
-          "virtual assistant blog",
-          "remote team tips",
-          "VA outsourcing",
-          "scale with VAs",
-          "DON VA",
+          "SEO blog",
+          "search engine optimization tips",
+          "technical SEO",
+          "content strategy",
+          "DON SEO",
         ],
     alternates: {
       canonical,
@@ -49,8 +49,8 @@ export async function generateMetadata({
       type: "website",
       locale: isDe ? "de_DE" : "en_US",
       alternateLocale: isDe ? "en_US" : "de_DE",
-      siteName: "DON VA",
-      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "DON VA" }],
+      siteName: "DON SEO",
+      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "DON SEO" }],
     },
     twitter: {
       card: "summary_large_image",

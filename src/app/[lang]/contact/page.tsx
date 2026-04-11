@@ -13,19 +13,19 @@ export async function generateMetadata({
   const { lang: raw } = await params;
   const seg = publicLocalePathSegment(raw);
   const isDE = seg === "de";
-  const title = isDE ? "Kontakt — DON VA | Virtuelle Assistenten" : "Contact — DON VA | Virtual Assistants";
+  const title = isDE ? "Kontakt — SEO Agentur" : "Contact — SEO Agency";
   const description = isDE
-    ? "Kontaktieren Sie DON VA für Beratung zu deutschsprachigen virtuellen Assistenten und Remote-Teams."
-    : "Contact DON VA for a consultation about German-speaking virtual assistants and remote team scaling.";
+    ? "Kontaktieren Sie DON SEO für eine Beratung zu Suchmaschinenoptimierung und SEO-Dienstleistungen."
+    : "Contact DON SEO for a consultation about search engine optimization and SEO services.";
   const { languages } = hreflangAlternates("contact");
   const canonical = absoluteUrl(`/${seg}/contact`);
 
   return {
-    title,
+    title: { absolute: `${title} | DON SEO` },
     description,
     keywords: isDE
-      ? ["kontakt DON VA", "virtuelle assistenz anfrage", "VA beratung"]
-      : ["contact DON VA", "virtual assistant inquiry", "VA consultation"],
+      ? ["kontakt DON SEO", "SEO anfrage", "SEO beratung"]
+      : ["contact DON SEO", "SEO inquiry", "SEO consultation"],
     alternates: {
       canonical,
       languages,
@@ -37,8 +37,8 @@ export async function generateMetadata({
       type: "website",
       locale: isDE ? "de_DE" : "en_US",
       alternateLocale: isDE ? "en_US" : "de_DE",
-      siteName: "DON VA",
-      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "DON VA" }],
+      siteName: "DON SEO",
+      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "DON SEO" }],
     },
     twitter: {
       card: "summary_large_image",

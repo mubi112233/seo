@@ -21,10 +21,10 @@ export const Footer: React.FC = () => {
         { label: "Contact Us", href: "/en/contact" },
       ],
       serviceLinks: [
-        { label: "Social Media Management", href: "/en/#services" },
-        { label: "Customer Support VAs", href: "/en/#services" },
-        { label: "Back-Office & Admin", href: "/en/#services" },
-        { label: "SEO & Content", href: "/en/#services" },
+        { label: "Technical SEO", href: "/en/#services" },
+        { label: "Content Strategy", href: "/en/#services" },
+        { label: "Link Building", href: "/en/#services" },
+        { label: "SEO Audits", href: "/en/#services" },
         { label: "Pricing Plans", href: "/en/#pricing" },
       ],
       resourceLinks: [
@@ -34,7 +34,7 @@ export const Footer: React.FC = () => {
         { label: "FAQ", href: "/en/#faq" },
         { label: "Testimonials", href: "/en/#testimonials" },
       ],
-      tagline: "Pre-vetted, German-speaking virtual assistants for 80% less than local hires.",
+      tagline: "Professional SEO services to grow your organic traffic and improve search rankings.",
       rights: "All rights reserved.",
     },
     ge: {
@@ -47,10 +47,10 @@ export const Footer: React.FC = () => {
         { label: "Kontakt", href: "/de/contact" },
       ],
       serviceLinks: [
-        { label: "Social Media Management", href: "/de/#services" },
-        { label: "Kundensupport VAs", href: "/de/#services" },
-        { label: "Back-Office & Admin", href: "/de/#services" },
-        { label: "SEO & Content", href: "/de/#services" },
+        { label: "Technisches SEO", href: "/de/#services" },
+        { label: "Content-Strategie", href: "/de/#services" },
+        { label: "Link-Building", href: "/de/#services" },
+        { label: "SEO Audits", href: "/de/#services" },
         { label: "Preispläne", href: "/de/#pricing" },
       ],
       resourceLinks: [
@@ -60,7 +60,7 @@ export const Footer: React.FC = () => {
         { label: "FAQ", href: "/de/#faq" },
         { label: "Testimonials", href: "/de/#testimonials" },
       ],
-      tagline: "Geprüfte, deutschsprachige virtuelle Assistenten für 80% weniger als lokale Einstellungen.",
+      tagline: "Professionelle SEO-Dienste zur Steigerung Ihres organischen Traffics und besserer Rankings.",
       rights: "Alle Rechte vorbehalten.",
     },
   };
@@ -134,7 +134,7 @@ export const Footer: React.FC = () => {
 
         {/* Bottom bar */}
         <div className="mt-10 pt-6 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} Don Va. {c.rights}</p>
+          <p>© {new Date().getFullYear()} Don SEO. {c.rights}</p>
           <div className="flex items-center gap-4">
             <Link href={localizedPath(lang, siteConfig.routes.blog)} className="hover:text-gold transition-colors">Blog</Link>
             <Link href={localizedPath(lang, siteConfig.routes.contact)} className="hover:text-gold transition-colors">{isGe ? "Kontakt" : "Contact"}</Link>

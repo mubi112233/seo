@@ -17,10 +17,10 @@ export interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  brandName: "SEO Pro",
-  brandMarkText: "S",
+  brandName: "DON SEO",
+  brandMarkText: "D",
   defaultLocale: "en",
-  apiBase: process.env.NEXT_PUBLIC_API_BASE || "https://api.don-va.com",
+  apiBase: process.env.NEXT_PUBLIC_API_BASE || "https://api.don-seo.com",
   tenantId: process.env.NEXT_PUBLIC_TENANT_ID || "socal_media_agency",
   routes: {
     bookMeeting: "/book-meeting",

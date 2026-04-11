@@ -39,7 +39,7 @@ export async function generateMetadata({
 
   if (!post) return {};
 
-  const title = `${post.title} | DON VA`;
+  const title = `${post.title} | DON SEO`;
   const description = post.excerpt?.substring(0, 160) || "";
   const seg = publicLocalePathSegment(lang);
   const pathAfterLocale = `blog/${slug}`;
@@ -47,8 +47,8 @@ export async function generateMetadata({
   const { languages } = hreflangAlternates(pathAfterLocale);
 
   return {
-    title,
-    description,
+    title: "DON SEO Professional SEO Services",
+    provider: { "@type": "Organization", name: "DON SEO", url: "https://don.seo" },
     alternates: { canonical, languages },
     openGraph: {
       title,
@@ -57,7 +57,7 @@ export async function generateMetadata({
       type: "article",
       locale: seg === "de" ? "de_DE" : "en_US",
       alternateLocale: seg === "de" ? "en_US" : "de_DE",
-      siteName: "DON VA",
+      siteName: "DON SEO",
       images: post.image ? [{ url: post.image, width: 1200, height: 630, alt: post.title }] : [],
     },
     twitter: {
@@ -65,6 +65,10 @@ export async function generateMetadata({
       title,
       description,
       images: post.image ? [post.image] : [],
+      publisher: {
+        "@type": "Organization",
+        name: "DON SEO",
+      },
     },
   };
 }

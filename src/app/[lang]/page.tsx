@@ -31,32 +31,33 @@ export async function generateMetadata({
   const title =
     hero?.metaTitle ||
     (lang === "ge"
-      ? "DON VA – Virtuelle Assistenten & Remote-Teams | Geprüfte VAs"
-      : "DON VA – Virtual Assistant Services | German-Speaking VAs");
+      ? "DON SEO – Professionelle SEO-Dienste & Suchmaschinenoptimierung | SEO Agentur"
+      : "DON SEO – Professional SEO Services | Grow Your Organic Traffic");
   const description =
     hero?.metaDescription ||
     (lang === "ge"
-      ? "Geprüfte, deutschsprachige virtuelle Assistenten für deutlich weniger als lokale Einstellungen. Skalieren Sie Ihr Team schnell und sicher — ideal für DACH."
-      : "Hire pre-vetted, German-speaking virtual assistants for far less than local hires. Scale your team in days with quality control built in.");
+      ? "Professionelle SEO-Dienste für Unternehmen in der DACH-Region. Technisches SEO, Content-Strategie und Link-Building für mehr organischen Traffic."
+      : "Professional SEO services for businesses in the DACH region. Technical SEO, content strategy, and link building to grow your organic traffic.");
   const keywordsFromHero = hero?.metaKeywords
     ? hero.metaKeywords.split(",").map((k: string) => k.trim())
     : null;
   const defaultDeKeywords = [
-    "virtuelle assistenz",
-    "virtueller assistent deutsch",
-    "deutschsprachiger VA",
-    "remote assistent",
-    "outsourcing deutschland",
-    "virtuelle assistenz agentur",
-    "DON VA",
+    "SEO Agentur",
+    "Suchmaschinenoptimierung",
+    "technisches SEO",
+    "Content-Strategie",
+    "Link-Building",
+    "SEO Dienstleistungen",
+    "DON SEO",
   ];
   const defaultEnKeywords = [
-    "virtual assistant",
-    "German speaking VA",
-    "remote assistant",
-    "outsource admin",
-    "DACH business support",
-    "DON VA",
+    "SEO services",
+    "search engine optimization",
+    "technical SEO",
+    "content strategy",
+    "link building",
+    "DACH SEO",
+    "DON SEO",
   ];
   const keywords = keywordsFromHero ?? (lang === "ge" ? defaultDeKeywords : defaultEnKeywords);
   const pathSeg = publicLocalePathSegment(lang);
@@ -64,7 +65,7 @@ export async function generateMetadata({
   const { languages } = hreflangAlternates("");
 
   return {
-    title,
+    title: { absolute: title },
     description,
     keywords,
     alternates: {
@@ -76,7 +77,7 @@ export async function generateMetadata({
       description,
       url: canonical,
       type: "website",
-      siteName: "DON VA",
+      siteName: "DON SEO",
       locale: lang === "ge" ? "de_DE" : "en_US",
       alternateLocale: lang === "ge" ? "en_US" : "de_DE",
       images: [
@@ -84,7 +85,7 @@ export async function generateMetadata({
           url: "/og-image.jpg",
           width: 1200,
           height: 630,
-          alt: lang === "ge" ? "DON VA — Virtuelle Assistenten" : "DON VA — Virtual assistant services",
+          alt: lang === "ge" ? "DON SEO — Professionelle SEO-Dienste" : "DON SEO — Professional SEO Services",
         },
       ],
     },
@@ -110,10 +111,10 @@ const pageJsonLd = (baseUrl: string) => ({
   en: {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "DON VA Virtual Assistant Services",
-    provider: { "@type": "Organization", name: "DON VA" },
+    name: "DON SEO Professional SEO Services",
+    provider: { "@type": "Organization", name: "DON SEO" },
     description:
-      "Pre-vetted, German-speaking virtual assistants for growing teams — strong fit for DACH and global companies.",
+      "Professional SEO services for growing businesses — technical SEO, content strategy, and link building for DACH and global companies.",
     areaServed: [
       { "@type": "Country", name: "Germany" },
       { "@type": "Country", name: "Austria" },
@@ -126,10 +127,10 @@ const pageJsonLd = (baseUrl: string) => ({
   ge: {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "DON VA Virtuelle Assistenten",
-    provider: { "@type": "Organization", name: "DON VA" },
+    name: "DON SEO Professionelle SEO-Dienste",
+    provider: { "@type": "Organization", name: "DON SEO" },
     description:
-      "Geprüfte, deutschsprachige virtuelle Assistenten für Unternehmen in DACH — schnelle Einarbeitung und laufende Qualitätskontrolle.",
+      "Professionelle SEO-Dienstleistungen für Unternehmen in DACH — technisches SEO, Content-Strategie und Link-Building für mehr organischen Traffic.",
     areaServed: [
       { "@type": "Country", name: "Germany" },
       { "@type": "Country", name: "Austria" },

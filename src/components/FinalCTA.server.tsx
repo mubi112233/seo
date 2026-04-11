@@ -21,16 +21,16 @@ const fallbackCopy = {
   en: {
     badge: "Ready to Scale?",
     headlineLine1: "Start with",
-    headlineLine2: "DON VA Today",
+    headlineLine2: "DON SEO Today",
     subheading:
-      "Book a free consultation and see how we can transform your operations in 48 hours.",
-    benefits: ["No setup fees", "14-day trial", "Native managers", "24/7 support"],
-    stats: { activeClients: "200+", avgRoi: "3.5x", satisfaction: "98%", fastStart: "48h" },
+      "Book a free consultation and see how we can improve your rankings in 30 days.",
+    benefits: ["No setup fees", "30-day trial", "SEO experts", "Monthly reporting"],
+    stats: { activeClients: "200+", avgRoi: "340%", satisfaction: "98%", fastStart: "30d" },
     statsLabels: {
       activeClients: "Active Clients",
-      avgRoi: "Avg. ROI",
+      avgRoi: "Traffic Growth",
       satisfaction: "Satisfaction",
-      fastStart: "Fast Start",
+      fastStart: "First Results",
     },
     trust: {
       consultationTime: "30 min",
@@ -47,16 +47,16 @@ const fallbackCopy = {
   ge: {
     badge: "Bereit zu skalieren?",
     headlineLine1: "Starten Sie noch heute",
-    headlineLine2: "mit DON VA",
+    headlineLine2: "mit DON SEO",
     subheading:
-      "Buchen Sie eine kostenlose Beratung und erleben Sie, wie wir Ihre Abläufe in 48 Stunden transformieren.",
-    benefits: ["Keine Einrichtungsgebühren", "14-Tage-Test", "Native Manager", "24/7 Support"],
-    stats: { activeClients: "200+", avgRoi: "3.5x", satisfaction: "98%", fastStart: "48h" },
+      "Buchen Sie eine kostenlose Beratung und erleben Sie, wie wir Ihre Rankings in 30 Tagen verbessern.",
+    benefits: ["Keine Einrichtungsgebühren", "30-Tage-Test", "SEO-Experten", "Monatliches Reporting"],
+    stats: { activeClients: "200+", avgRoi: "340%", satisfaction: "98%", fastStart: "30d" },
     statsLabels: {
       activeClients: "Aktive Kunden",
-      avgRoi: "Ø ROI",
+      avgRoi: "Traffic-Wachstum",
       satisfaction: "Zufriedenheit",
-      fastStart: "Schnellstart",
+      fastStart: "Erste Ergebnisse",
     },
     trust: {
       consultationTime: "30 Min.",
