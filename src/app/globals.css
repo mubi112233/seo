@@ -1,0 +1,288 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+ * Tailwind CSS File
+ * Note: @tailwind and @apply directives are valid Tailwind CSS syntax.
+ * If your IDE shows warnings, these can be safely ignored or configure your CSS validator.
+ */
+
+@layer base {
+  :root {
+    /* SEO Agency Blue Theme (Light, professional) */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%; /* Black text as requested */
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%; /* Black text */
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%; /* Black text */
+
+    --primary: 220 100% 50%; /* Bright blue for highlights */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 15% 96%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 220 13% 97%;
+    --muted-foreground: 220 10% 40%;
+
+    --accent: 220 100% 50%; /* Blue accent for highlights */
+    --accent-foreground: 0 0% 100%;
+
+    --hover: 220 15% 93%;
+    --hover-foreground: 0 0% 0%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 86%;
+    --input: 220 13% 86%;
+    --ring: 220 100% 50%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens for SEO Agency */
+    --gold: 220 100% 50%;      /* Blue for highlights */
+    --gold-dark: 220 100% 40%; /* Darker blue */
+    --gold-light: 220 100% 60%; /* Lighter blue */
+    --brand-blue: 220 85% 25%; /* Dark blue for details */
+    
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(220 100% 50%) 0%, hsl(220 85% 25%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(220 85% 15%) 0%, hsl(220 85% 20%) 100%);
+    
+    /* Shadows */
+    --shadow-gold: 0 10px 40px -10px hsl(220 100% 50% / 0.3);
+    --shadow-gold-lg: 0 25px 80px -20px hsl(220 100% 50% / 0.4);
+    --shadow-elegant: 0 20px 60px -15px hsl(220 85% 25% / 0.3);
+    --shadow-brutal: 8px 8px 0px hsl(220 100% 50%);
+    
+    /* Transitions */
+    --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 220 15% 97%;
+    --sidebar-foreground: 0 0% 0%;
+    --sidebar-primary: 220 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 95%;
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: 220 13% 88%;
+    --sidebar-ring: 220 100% 50%;
+
+    /* Typographic + layout tokens */
+    --heading-color: 0 0% 0%; /* Black headings */
+    --heading-size: 1.5rem;
+    --side-padding: 1.5rem;
+  }
+
+  .dark {
+    /* Enhanced SEO Agency Dark Mode */
+    --background: 220 85% 6%; /* Deeper dark blue background */
+    --foreground: 0 0% 98%; /* Softer white for better readability */
+
+    --card: 220 85% 10%; /* Slightly lighter cards for better contrast */
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 85% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 220 100% 65%; /* Brighter blue for better visibility */
+    --primary-foreground: 220 85% 6%;
+
+    --secondary: 220 30% 18%; /* Better contrast for secondary elements */
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 220 30% 18%;
+    --muted-foreground: 220 15% 75%; /* Improved readability */
+
+    --accent: 220 100% 65%; /* Consistent with primary */
+    --accent-foreground: 220 85% 6%;
+
+    --hover: 220 35% 22%; /* More pronounced hover states */
+    --hover-foreground: 0 0% 98%;
+
+    --destructive: 350 84% 55%; /* Slightly brighter for visibility */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 25% 28%; /* Better border visibility */
+    --input: 220 25% 28%;
+    --ring: 220 100% 65%;
+    
+    --sidebar-background: 220 85% 8%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 220 100% 65%;
+    --sidebar-primary-foreground: 220 85% 6%;
+    --sidebar-accent: 220 30% 18%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 220 25% 28%;
+    --sidebar-ring: 220 100% 65%;
+
+    --heading-color: 0 0% 98%;
+    --brand-blue: 220 100% 75%; /* Even brighter for dark theme visibility */
+    --gold: 220 100% 65%; /* Consistent blue highlights */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    scroll-behavior: smooth;
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    transition: background-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: hsl(var(--heading-color));
+    transition: color 0.3s ease;
+  }
+
+  /* Enhanced dark mode transitions */
+  .dark {
+    color-scheme: dark;
+  }
+
+  /* Improved scrollbar for dark mode */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--gold));
+  }
+
+  /* Enhanced focus states */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--gold));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Smooth animations for all interactive elements */
+  button, a, [role="button"] {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* Enhanced backdrop blur support */
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .backdrop-blur-lg {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .backdrop-blur-xl {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+
+}
+
+@layer components {
+  .section {
+    @apply relative py-8 sm:py-10 md:py-12 lg:py-14;
+  }
+
+  .section-bg-premium {
+    @apply bg-gradient-to-b from-background via-muted/30 to-background;
+  }
+
+  .badge-pill {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold;
+  }
+
+  .badge-gold {
+    @apply bg-gold text-foreground;
+  }
+
+  .badge-gold-soft {
+    @apply bg-gold/10 text-gold border border-gold/20 backdrop-blur-sm;
+  }
+
+  .card-premium {
+    @apply relative bg-card/50 backdrop-blur-sm border-2 border-border/50 rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 transition-all duration-500 overflow-hidden;
+  }
+
+  .card-premium:hover {
+    @apply bg-card border-gold/50 shadow-elegant;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-xl transition-all duration-300;
+  }
+
+  .btn-gold {
+    @apply btn bg-gold text-foreground hover:bg-gold/90;
+  }
+
+  .btn-outline {
+    @apply btn bg-transparent border-2 border-border text-foreground hover:border-gold hover:bg-gold/5;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  .app-shell {
+    padding-left: var(--side-padding);
+    padding-right: var(--side-padding);
+  }
+
+  /* Skip to main content — accessibility + SEO */
+  .skip-to-content {
+    @apply sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-gold focus:text-black focus:rounded-lg focus:font-semibold;
+  }
+
+  /* Text balance for headings */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Visually hidden but accessible to screen readers */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}
