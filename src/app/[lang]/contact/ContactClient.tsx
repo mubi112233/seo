@@ -20,28 +20,28 @@ import {
   Mail,
   Send,
   CheckCircle2,
-  Users,
   Briefcase,
   MessageSquare,
   Loader2,
   Star,
   Clock,
   Shield,
+  Globe,
+  TrendingUp,
+  Users,
 } from "lucide-react";
 
 type FormValues = {
   email: string;
   phone: string;
-  vaCount: string;
-  va1Background?: string;
-  va2Industry?: string;
-  va2Background?: string;
-  va3Industry?: string;
-  va3Background?: string;
-  va4Industry?: string;
-  va4Background?: string;
+  websiteUrl: string;
+  industry: string;
+  budget: string;
   mainService: string;
   mainServiceOther?: string;
+  challenges: string;
+  goals: string;
+  competitors?: string;
   otherTasks: string;
 };
 
@@ -52,19 +52,22 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: "Tell us about your website and goals, and we'll create a custom SEO strategy within 48 hours.",
     email: "Email Address",
     phone: "Phone Number",
+    websiteUrlLabel: "Website URL",
+    websiteUrlPlaceholder: "https://yourwebsite.com",
+    industryLabel: "Industry",
+    industryPlaceholder: "Select your industry",
+    budgetLabel: "Monthly Budget (EUR)",
+    budgetPlaceholder: "e.g. 2000",
     mainServiceLabel: "Main Service Needed",
     mainServicePlaceholder: "Select a service",
     mainServiceOtherLabel: "Describe the service",
     mainServiceOtherPlaceholder: "Describe what you need...",
-    vaCountLabel: "Monthly budget (EUR)?",
-    vaCountPlaceholder: "e.g. 2000",
-    va1Label: "Website URL",
-    va2IndustryLabel: "Industry",
-    va2Label: "Current SEO challenges",
-    va3IndustryLabel: "Target market",
-    va3Label: "Goals & objectives",
-    va4IndustryLabel: "Competitors",
-    va4Label: "Additional information",
+    challengesLabel: "Current SEO Challenges",
+    challengesPlaceholder: "e.g. Low organic traffic, poor rankings, thin content...",
+    goalsLabel: "Goals & Objectives",
+    goalsPlaceholder: "e.g. Rank #1 for target keywords, increase organic leads by 50%...",
+    competitorsLabel: "Main Competitors (optional)",
+    competitorsPlaceholder: "e.g. competitor1.com, competitor2.com",
     otherTasksLabel: "Additional Notes",
     otherTasksPlaceholder: "Anything else you'd like us to know...",
     submit: "Send Message",
@@ -73,8 +76,12 @@ const translations: Record<string, Record<string, string>> = {
     emailInvalid: "Enter a valid email",
     phoneRequired: "Phone is required",
     phoneInvalid: "Enter a valid phone number",
+    websiteUrlRequired: "Website URL is required",
+    industryRequired: "Please select your industry",
+    budgetRequired: "Please enter your monthly budget",
     mainServiceRequired: "Please select a service",
-    vaCountRequired: "Please enter your monthly budget",
+    challengesRequired: "Please describe your SEO challenges",
+    goalsRequired: "Please describe your goals",
     sideTitle: "Why Work With Us?",
     stat1Value: "200+",
     stat1Label: "Happy Clients",
@@ -94,19 +101,22 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: "Erzählen Sie uns von Ihrer Website und Ihren Zielen, und wir erstellen eine maßgeschneiderte SEO-Strategie innerhalb von 48 Stunden.",
     email: "E-Mail-Adresse",
     phone: "Telefonnummer",
+    websiteUrlLabel: "Website-URL",
+    websiteUrlPlaceholder: "https://ihrewebsite.de",
+    industryLabel: "Branche",
+    industryPlaceholder: "Branche auswählen",
+    budgetLabel: "Monatliches Budget (EUR)",
+    budgetPlaceholder: "z.B. 2000",
     mainServiceLabel: "Hauptdienstleistung",
     mainServicePlaceholder: "Dienst auswählen",
     mainServiceOtherLabel: "Dienst beschreiben",
     mainServiceOtherPlaceholder: "Beschreiben Sie Ihre Anforderungen...",
-    vaCountLabel: "Monatliches Budget (EUR)?",
-    vaCountPlaceholder: "z.B. 2000",
-    va1Label: "Website-URL",
-    va2IndustryLabel: "Branche",
-    va2Label: "Aktuelle SEO-Herausforderungen",
-    va3IndustryLabel: "Zielmarkt",
-    va3Label: "Ziele & Objectives",
-    va4IndustryLabel: "Wettbewerber",
-    va4Label: "Zusätzliche Informationen",
+    challengesLabel: "Aktuelle SEO-Herausforderungen",
+    challengesPlaceholder: "z.B. Wenig organischer Traffic, schlechte Rankings...",
+    goalsLabel: "Ziele & Objectives",
+    goalsPlaceholder: "z.B. Platz 1 für Ziel-Keywords, organische Leads um 50% steigern...",
+    competitorsLabel: "Hauptwettbewerber (optional)",
+    competitorsPlaceholder: "z.B. wettbewerber1.de, wettbewerber2.de",
     otherTasksLabel: "Weitere Anmerkungen",
     otherTasksPlaceholder: "Was sollen wir noch wissen...",
     submit: "Nachricht senden",
@@ -115,8 +125,12 @@ const translations: Record<string, Record<string, string>> = {
     emailInvalid: "Gültige E-Mail eingeben",
     phoneRequired: "Telefon ist erforderlich",
     phoneInvalid: "Gültige Telefonnummer eingeben",
+    websiteUrlRequired: "Website-URL ist erforderlich",
+    industryRequired: "Bitte wählen Sie Ihre Branche",
+    budgetRequired: "Bitte geben Sie Ihr monatliches Budget ein",
     mainServiceRequired: "Bitte wählen Sie einen Dienst",
-    vaCountRequired: "Bitte geben Sie Ihr monatliches Budget ein",
+    challengesRequired: "Bitte beschreiben Sie Ihre SEO-Herausforderungen",
+    goalsRequired: "Bitte beschreiben Sie Ihre Ziele",
     sideTitle: "Warum mit uns arbeiten?",
     stat1Value: "200+",
     stat1Label: "Zufriedene Kunden",
@@ -125,8 +139,8 @@ const translations: Record<string, Record<string, string>> = {
     stat3Value: "4.9/5",
     stat3Label: "Durchschnittsbewertung",
     feature1: "Datengesteuerte SEO-Strategien",
-    feature2: "Bis zu 70% günstiger als lokale Einstellungen",
-    feature3: "14-Tage-Geld-zurück-Garantie",
+    feature2: "Technische SEO-Exzellenz",
+    feature3: "Transparentes monatliches Reporting",
     feature4: "Persönlicher Account Manager",
     responseTime: "Wir antworten in der Regel innerhalb von 2 Stunden",
   },
@@ -134,8 +148,13 @@ const translations: Record<string, Record<string, string>> = {
 
 const industryOptions = [
   { value: "ecommerce", label: "E-Commerce" },
-  { value: "marketing", label: "Marketing / Agency" },
   { value: "saas", label: "SaaS / Tech" },
+  { value: "local-business", label: "Local Business" },
+  { value: "healthcare", label: "Healthcare" },
+  { value: "finance", label: "Finance" },
+  { value: "real-estate", label: "Real Estate" },
+  { value: "education", label: "Education" },
+  { value: "marketing", label: "Marketing / Agency" },
   { value: "other", label: "Other" },
 ];
 
@@ -170,42 +189,62 @@ export default function ContactClient({ lang }: { lang: string }) {
     reset,
   } = useForm<FormValues>({
     defaultValues: {
-      email: "", phone: "", vaCount: "",
-      va1Background: "", va2Industry: "", va2Background: "",
-      va3Industry: "", va3Background: "", va4Industry: "", va4Background: "",
-      mainService: "", mainServiceOther: "", otherTasks: "",
+      email: "", phone: "", websiteUrl: "", industry: "",
+      budget: "", mainService: "", mainServiceOther: "",
+      challenges: "", goals: "", competitors: "", otherTasks: "",
     },
     mode: "onBlur",
   });
 
-  const vaCountValue = useWatch({ control, name: "vaCount" });
   const mainServiceValue = useWatch({ control, name: "mainService" });
 
   const emailPattern = useMemo(() => /[^\s@]+@[^\s@]+\.[^\s@]+/, []);
   const phonePattern = useMemo(() => /^[0-9+\-()\s]{7,20}$/i, []);
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    const formData = new FormData();
-    formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "8aff1902-6795-4608-ad79-be6702aa7f3a");
-    formData.append("to", "patryk@dononlineagency.com");
-    formData.append("subject", "New contact request - DON SEO");
-    formData.append("email", data.email);
-    formData.append("phone", data.phone);
-    formData.append("vaCount", data.vaCount);
-    if (data.va1Background?.trim()) formData.append("va1Background", data.va1Background.trim());
-    if (data.va2Industry?.trim()) formData.append("va2Industry", data.va2Industry.trim());
-    if (data.va2Background?.trim()) formData.append("va2Background", data.va2Background.trim());
-    if (data.va3Industry?.trim()) formData.append("va3Industry", data.va3Industry.trim());
-    if (data.va3Background?.trim()) formData.append("va3Background", data.va3Background.trim());
-    if (data.va4Industry?.trim()) formData.append("va4Industry", data.va4Industry.trim());
-    if (data.va4Background?.trim()) formData.append("va4Background", data.va4Background.trim());
-    if (data.mainService) formData.append("mainService", data.mainService);
-    if (data.mainService === "other" && data.mainServiceOther?.trim())
-      formData.append("mainServiceOther", data.mainServiceOther.trim());
-    if (data.otherTasks.trim()) formData.append("otherTasks", data.otherTasks.trim());
+    const serviceLabel = {
+      "local-seo": "Local SEO", "technical-seo": "Technical SEO", "on-page-seo": "On-Page SEO",
+      "link-building": "Link Building", "content-marketing": "Content Marketing",
+      "ecommerce-seo": "E-Commerce SEO", "international-seo": "International SEO",
+      "seo-audit": "SEO Audit", "other": "Other",
+    }[data.mainService] ?? data.mainService;
+
+    const industryLabel = industryOptions.find((o) => o.value === data.industry)?.label ?? data.industry;
+
+    const row = (label: string, value?: string) =>
+      value?.trim()
+        ? `<tr><td style="padding:8px 12px;font-weight:600;color:#555;white-space:nowrap;border-bottom:1px solid #eee">${label}</td><td style="padding:8px 12px;color:#222;border-bottom:1px solid #eee">${value.trim()}</td></tr>`
+        : "";
+
+    const message = `
+      <table style="font-family:sans-serif;font-size:14px;border-collapse:collapse;width:100%">
+        ${row("Email", data.email)}
+        ${row("Phone", data.phone)}
+        ${row("Website URL", data.websiteUrl)}
+        ${row("Industry", industryLabel)}
+        ${row("Monthly Budget (EUR)", data.budget)}
+        ${row("Main Service", serviceLabel)}
+        ${data.mainService === "other" ? row("Service Description", data.mainServiceOther) : ""}
+        ${row("SEO Challenges", data.challenges)}
+        ${row("Goals & Objectives", data.goals)}
+        ${row("Competitors", data.competitors)}
+        ${row("Additional Notes", data.otherTasks)}
+      </table>
+    `;
 
     try {
-      const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: formData });
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "8aff1902-6795-4608-ad79-be6702aa7f3a",
+          to: "patryk@dononlineagency.com",
+          subject: `New SEO Enquiry from ${data.email}`,
+          from_name: data.email,
+          email: data.email,
+          message,
+        }),
+      });
       const json = await res.json();
       if (json.success) {
         toast({ title: "Success!", description: "Your message has been sent." });
@@ -220,14 +259,12 @@ export default function ContactClient({ lang }: { lang: string }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/10 to-background relative overflow-hidden">
-      {/* Background blobs */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[160px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gold/4 rounded-full blur-[140px] pointer-events-none" />
 
       <Navbar />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 pt-28 pb-20">
-        {/* Page Header */}
         <motion.div
           className="text-left mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -254,11 +291,10 @@ export default function ContactClient({ lang }: { lang: string }) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            {/* Stats */}
             <div className="grid grid-cols-3 gap-3">
               {[
                 { value: c.stat1Value, label: c.stat1Label, icon: Users },
-                { value: c.stat2Value, label: c.stat2Label, icon: Clock },
+                { value: c.stat2Value, label: c.stat2Label, icon: TrendingUp },
                 { value: c.stat3Value, label: c.stat3Label, icon: Star },
               ].map(({ value, label, icon: Icon }) => (
                 <div key={label} className="text-center p-4 bg-card border border-border/50 rounded-xl hover:border-gold/40 transition-colors">
@@ -269,7 +305,6 @@ export default function ContactClient({ lang }: { lang: string }) {
               ))}
             </div>
 
-            {/* Features */}
             <div className="p-6 bg-card border border-border/50 rounded-xl space-y-4">
               <h3 className="font-bold text-foreground text-base">{c.sideTitle}</h3>
               <ul className="space-y-3">
@@ -282,13 +317,11 @@ export default function ContactClient({ lang }: { lang: string }) {
               </ul>
             </div>
 
-            {/* Response time */}
             <div className="flex items-center gap-3 p-4 bg-gold/5 border border-gold/20 rounded-xl">
               <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse flex-shrink-0" />
               <p className="text-sm text-muted-foreground">{c.responseTime}</p>
             </div>
 
-            {/* Testimonial */}
             <div className="p-5 bg-card border border-border/50 rounded-xl space-y-3">
               <div className="flex gap-1">
                 {[...Array(5)].map((_, i) => <Star key={i} className="w-3.5 h-3.5 text-gold fill-gold" />)}
@@ -307,7 +340,6 @@ export default function ContactClient({ lang }: { lang: string }) {
               </div>
             </div>
 
-            {/* Security note */}
             <div className="flex items-center gap-2 text-xs text-muted-foreground">
               <Shield className="w-3.5 h-3.5 text-gold flex-shrink-0" />
               <span>Your information is 100% secure and never shared.</span>
@@ -322,10 +354,9 @@ export default function ContactClient({ lang }: { lang: string }) {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="bg-card border border-border/50 rounded-2xl shadow-xl shadow-black/10 overflow-hidden">
-              {/* Form header bar */}
               <div className="px-6 sm:px-8 py-5 border-b border-border/50 bg-gradient-to-r from-gold/5 to-transparent">
                 <h2 className="font-bold text-foreground text-lg">Fill in your details</h2>
-                <p className="text-sm text-muted-foreground mt-0.5">All fields marked are required</p>
+                <p className="text-sm text-muted-foreground mt-0.5">All fields marked with * are required</p>
               </div>
 
               <form className="px-6 sm:px-8 py-7 space-y-8" onSubmit={handleSubmit(onSubmit)}>
@@ -364,111 +395,132 @@ export default function ContactClient({ lang }: { lang: string }) {
                   </div>
                 </FormSection>
 
-                {/* Service */}
-                <FormSection icon={Briefcase} title="Service Requirements">
-                  <div className="space-y-1.5">
-                    <Label className="text-sm">{c.mainServiceLabel} <span className="text-gold">*</span></Label>
-                    <Select onValueChange={(v) => setValue("mainService", v, { shouldValidate: true })}>
-                      <SelectTrigger className="border-border/60 focus:border-gold/60">
-                        <SelectValue placeholder={c.mainServicePlaceholder} />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="social-media">Social Media Management</SelectItem>
-                        <SelectItem value="customer-support">Customer Support</SelectItem>
-                        <SelectItem value="back-office">Back-Office & Admin</SelectItem>
-                        <SelectItem value="seo-content">SEO & Content</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <input type="hidden" {...register("mainService", { required: c.mainServiceRequired })} />
-                    <FieldError message={errors.mainService?.message} />
-                    <AnimatePresence>
-                      {mainServiceValue === "other" && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          className="space-y-1.5 mt-3"
-                        >
-                          <Label htmlFor="mainServiceOther" className="text-sm">{c.mainServiceOtherLabel}</Label>
-                          <Textarea
-                            id="mainServiceOther"
-                            rows={3}
-                            placeholder={c.mainServiceOtherPlaceholder}
-                            className="border-border/60 focus:border-gold/60 resize-none"
-                            {...register("mainServiceOther")}
-                          />
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                {/* Website Info */}
+                <FormSection icon={Globe} title="Website Information">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <Label htmlFor="websiteUrl" className="text-sm">{c.websiteUrlLabel} <span className="text-gold">*</span></Label>
+                      <Input
+                        id="websiteUrl"
+                        type="url"
+                        placeholder={c.websiteUrlPlaceholder}
+                        className="border-border/60 focus:border-gold/60 transition-colors"
+                        {...register("websiteUrl", { required: c.websiteUrlRequired })}
+                      />
+                      <FieldError message={errors.websiteUrl?.message} />
+                    </div>
+                    <div className="space-y-1.5">
+                      <Label className="text-sm">{c.industryLabel} <span className="text-gold">*</span></Label>
+                      <Select onValueChange={(v) => setValue("industry", v, { shouldValidate: true })}>
+                        <SelectTrigger className="border-border/60 focus:border-gold/60">
+                          <SelectValue placeholder={c.industryPlaceholder} />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {industryOptions.map((o) => (
+                            <SelectItem key={o.value} value={o.value}>{o.label}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <input type="hidden" {...register("industry", { required: c.industryRequired })} />
+                      <FieldError message={errors.industry?.message} />
+                    </div>
                   </div>
                 </FormSection>
 
-                {/* Budget */}
-                <FormSection icon={Users} title="Team Size">
-                  <div className="space-y-1.5">
-                    <Label htmlFor="vaCount" className="text-sm">{c.vaCountLabel} <span className="text-gold">*</span></Label>
-                    <Input
-                      id="vaCount"
-                      type="number"
-                      min={1}
-                      max={10}
-                      placeholder={c.vaCountPlaceholder}
-                      className="border-border/60 focus:border-gold/60 max-w-[160px]"
-                      {...register("vaCount", { required: c.vaCountRequired })}
-                    />
-                    <FieldError message={errors.vaCount?.message} />
+                {/* Service & Budget */}
+                <FormSection icon={Briefcase} title="Service & Budget">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <Label className="text-sm">{c.mainServiceLabel} <span className="text-gold">*</span></Label>
+                      <Select onValueChange={(v) => setValue("mainService", v, { shouldValidate: true })}>
+                        <SelectTrigger className="border-border/60 focus:border-gold/60">
+                          <SelectValue placeholder={c.mainServicePlaceholder} />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="local-seo">Local SEO</SelectItem>
+                          <SelectItem value="technical-seo">Technical SEO</SelectItem>
+                          <SelectItem value="on-page-seo">On-Page SEO</SelectItem>
+                          <SelectItem value="link-building">Link Building</SelectItem>
+                          <SelectItem value="content-marketing">Content Marketing</SelectItem>
+                          <SelectItem value="ecommerce-seo">E-Commerce SEO</SelectItem>
+                          <SelectItem value="international-seo">International SEO</SelectItem>
+                          <SelectItem value="seo-audit">SEO Audit</SelectItem>
+                          <SelectItem value="other">Other</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <input type="hidden" {...register("mainService", { required: c.mainServiceRequired })} />
+                      <FieldError message={errors.mainService?.message} />
+                    </div>
+                    <div className="space-y-1.5">
+                      <Label htmlFor="budget" className="text-sm">{c.budgetLabel} <span className="text-gold">*</span></Label>
+                      <Input
+                        id="budget"
+                        type="number"
+                        min={0}
+                        placeholder={c.budgetPlaceholder}
+                        className="border-border/60 focus:border-gold/60 transition-colors"
+                        {...register("budget", { required: c.budgetRequired })}
+                      />
+                      <FieldError message={errors.budget?.message} />
+                    </div>
                   </div>
-
-                  {/* Dynamic fields */}
                   <AnimatePresence>
-                    {[1, 2, 3, 4].map((n) =>
-                      Number(vaCountValue) >= n ? (
-                        <motion.div
-                          key={n}
-                          initial={{ opacity: 0, y: -8 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -8 }}
-                          transition={{ duration: 0.3 }}
-                          className="p-4 bg-muted/30 border border-border/40 rounded-xl space-y-3"
-                        >
-                          <div className="flex items-center gap-2">
-                            <span className="w-6 h-6 rounded-full bg-gold text-black text-xs font-bold flex items-center justify-center">{n}</span>
-                            <span className="text-sm font-semibold text-foreground">SEO Requirement #{n}</span>
-                          </div>
-                          {n >= 2 && (
-                            <div className="space-y-1.5">
-                              <Label className="text-xs text-muted-foreground">{c[`va${n}IndustryLabel`]}</Label>
-                              <Select onValueChange={(v) => setValue(`va${n}Industry` as any, v)}>
-                                <SelectTrigger className="border-border/60 h-9 text-sm">
-                                  <SelectValue placeholder={c[`va${n}IndustryLabel`]} />
-                                </SelectTrigger>
-                                <SelectContent>
-                                  {industryOptions.map((o) => (
-                                    <SelectItem key={o.value} value={o.value}>{o.label}</SelectItem>
-                                  ))}
-                                </SelectContent>
-                              </Select>
-                            </div>
-                          )}
-                          <div className="space-y-1.5">
-                            <Label className="text-xs text-muted-foreground">{c[`va${n === 1 ? 1 : n}Label`]}</Label>
-                            <Textarea
-                              rows={2}
-                              placeholder={
-                                n === 1 ? "Example: Customer support for Shopify store, fluent German, email + chat." :
-                                n === 2 ? "Example: Back-office admin: email inbox, calendar coordination, invoicing." :
-                                n === 3 ? "Example: SEO & content: blog writing, keyword research, on-page optimization." :
-                                "Example: Social media: content scheduling, engagement, reports."
-                              }
-                              className="border-border/60 focus:border-gold/60 resize-none text-sm"
-                              {...register(`va${n === 1 ? "1" : n}Background` as any)}
-                            />
-                          </div>
-                        </motion.div>
-                      ) : null
+                    {mainServiceValue === "other" && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="space-y-1.5"
+                      >
+                        <Label htmlFor="mainServiceOther" className="text-sm">{c.mainServiceOtherLabel}</Label>
+                        <Textarea
+                          id="mainServiceOther"
+                          rows={3}
+                          placeholder={c.mainServiceOtherPlaceholder}
+                          className="border-border/60 focus:border-gold/60 resize-none"
+                          {...register("mainServiceOther")}
+                        />
+                      </motion.div>
                     )}
                   </AnimatePresence>
+                </FormSection>
+
+                {/* SEO Details */}
+                <FormSection icon={TrendingUp} title="SEO Details">
+                  <div className="space-y-4">
+                    <div className="space-y-1.5">
+                      <Label htmlFor="challenges" className="text-sm">{c.challengesLabel} <span className="text-gold">*</span></Label>
+                      <Textarea
+                        id="challenges"
+                        rows={3}
+                        placeholder={c.challengesPlaceholder}
+                        className="border-border/60 focus:border-gold/60 resize-none"
+                        {...register("challenges", { required: c.challengesRequired })}
+                      />
+                      <FieldError message={errors.challenges?.message} />
+                    </div>
+                    <div className="space-y-1.5">
+                      <Label htmlFor="goals" className="text-sm">{c.goalsLabel} <span className="text-gold">*</span></Label>
+                      <Textarea
+                        id="goals"
+                        rows={3}
+                        placeholder={c.goalsPlaceholder}
+                        className="border-border/60 focus:border-gold/60 resize-none"
+                        {...register("goals", { required: c.goalsRequired })}
+                      />
+                      <FieldError message={errors.goals?.message} />
+                    </div>
+                    <div className="space-y-1.5">
+                      <Label htmlFor="competitors" className="text-sm">{c.competitorsLabel}</Label>
+                      <Input
+                        id="competitors"
+                        type="text"
+                        placeholder={c.competitorsPlaceholder}
+                        className="border-border/60 focus:border-gold/60 transition-colors"
+                        {...register("competitors")}
+                      />
+                    </div>
+                  </div>
                 </FormSection>
 
                 {/* Additional Notes */}

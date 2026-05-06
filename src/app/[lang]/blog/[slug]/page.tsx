@@ -47,8 +47,8 @@ export async function generateMetadata({
   const { languages } = hreflangAlternates(pathAfterLocale);
 
   return {
-    title: "DON SEO Professional SEO Services",
-    provider: { "@type": "Organization", name: "DON SEO", url: "https://don.seo" },
+    title,
+    description,
     alternates: { canonical, languages },
     openGraph: {
       title,
@@ -65,10 +65,6 @@ export async function generateMetadata({
       title,
       description,
       images: post.image ? [post.image] : [],
-      publisher: {
-        "@type": "Organization",
-        name: "DON SEO",
-      },
     },
   };
 }

@@ -12,7 +12,7 @@ const getApiBase = () =>
 
 const getTenantId = () =>
   process.env.NEXT_PUBLIC_TENANT_ID ||
-  'socal_media_agency';
+  'don_seo';
 
 /**
  * Creates fetch options with proper headers including X-Tenant-ID
@@ -88,6 +88,9 @@ export function buildApiUrl(endpoint: string, lang: string): string {
   return `${endpoint}${separator}lang=${lang}`;
 }
 
+const sanitizeLog = (val: unknown): string =>
+  String(val).replace(/[\r\n\t]/g, " ").slice(0, 200);
+
 /**
  * Generic API fetcher for data with language support
  */
@@ -101,14 +104,14 @@ export async function fetchApiData<T>(
     const response = await fetchAPI(url, options);
     
     if (!response.ok) {
-      console.warn(`API request failed: ${response.status} ${response.statusText}`);
+      console.warn(`API request failed: ${sanitizeLog(response.status)} ${sanitizeLog(response.statusText)}`);
       return null;
     }
 
     const data = await response.json();
     return data;
   } catch (error) {
-    console.warn('Failed to fetch API data:', error);
+    console.warn('Failed to fetch API data:', sanitizeLog(error));
     return null;
   }
 }
@@ -126,14 +129,14 @@ export async function fetchApiDataClient<T>(
     const response = await fetchAPIClient(url, options);
     
     if (!response.ok) {
-      console.warn(`API request failed: ${response.status} ${response.statusText}`);
+      console.warn(`API request failed: ${sanitizeLog(response.status)} ${sanitizeLog(response.statusText)}`);
       return null;
     }
 
     const data = await response.json();
     return data;
   } catch (error) {
-    console.warn('Failed to fetch API data:', error);
+    console.warn('Failed to fetch API data:', sanitizeLog(error));
     return null;
   }
 }

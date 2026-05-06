@@ -83,6 +83,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: "@don_seo",
     title: "DON SEO - Professional SEO Services | Grow Your Organic Traffic",
     description:
       "Professional SEO services for businesses in the DACH region. Technical SEO, content strategy, and link building.",
@@ -103,7 +104,12 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: "DON SEO",
   url: SITE_URL,
-  logo: absoluteUrl("/favicon.ico"),
+  logo: {
+    "@type": "ImageObject",
+    url: absoluteUrl("/og-image.jpg"),
+    width: 1200,
+    height: 630,
+  },
   description:
     "Professional SEO services for growing businesses in the DACH region and worldwide.",
   contactPoint: {

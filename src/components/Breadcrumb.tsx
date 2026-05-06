@@ -20,7 +20,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
     // Add schema to document head
     const script = document.createElement("script");
     script.type = "application/ld+json";
-    script.innerHTML = JSON.stringify(schema);
+    script.textContent = JSON.stringify(schema);
     document.head.appendChild(script);
 
     // Cleanup on unmount

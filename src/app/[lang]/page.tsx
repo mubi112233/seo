@@ -1,4 +1,4 @@
-import { Hero } from "@/components/Hero";
+import { HeroServer } from "@/components/HeroServer";
 import { Navbar } from "@/components/Navbar";
 import { HomeBelowFold } from "@/components/HomeBelowFold.hybrid";
 import { notFound } from "next/navigation";
@@ -165,7 +165,7 @@ export default async function HomeLangPage({
       />
       <Navbar />
       <main id="main-content" className="overflow-x-hidden">
-        <Hero />
+        <HeroServer lang={lang} />
         <HomeBelowFold lang={lang} />
       </main>
     </div>

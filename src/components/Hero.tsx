@@ -15,10 +15,10 @@ import {
 } from "lucide-react";
 import { fetchHero, HeroData } from "@/lib/api";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+
 import { siteConfig, localizedPath, type SiteLocale } from "@/lib/site-config";
 
-export const Hero = () => {
+export const Hero = ({ lang: langProp }: { lang?: string } = {}) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   const router = useRouter();
@@ -32,15 +32,16 @@ export const Hero = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0]);
   const springY = useSpring(y, { stiffness: 100, damping: 30 });
 
-  const [currentLang, setCurrentLang] = useState<string>("en");
   const abortControllerRef = useRef<AbortController | null>(null);
 
   const getLangFromPath = () => {
-    if (typeof window === "undefined") return "en";
+    if (typeof window === "undefined") return langProp ?? "en";
     const match = window.location.pathname.match(/^\/(en|ge|de)\b/i);
-    const raw = match?.[1]?.toLowerCase() || "en";
+    const raw = match?.[1]?.toLowerCase() || langProp || "en";
     return raw === "de" ? "ge" : raw;
   };
+
+  const [currentLang, setCurrentLang] = useState<string>(langProp ?? "en");
 
   useEffect(() => {
     setCurrentLang(getLangFromPath());
@@ -54,7 +55,7 @@ export const Hero = () => {
         subtitle:
           "Professionelle SEO-Dienstleistungen für Unternehmen in der DACH-Region. Technisches SEO, Content-Strategie und Link-Building für mehr Traffic.",
         tagline: "Von 200+ wachsenden Unternehmen vertraut",
-        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=900&fit=crop&q=80",
+        image: "/hero-seo.jpg",
         ctaPrimary: "Jetzt starten",
         urgency: "Begrenztes Angebot",
         stats: { clients: "200+", costSaved: "70%", rating: "4.9/5" },
@@ -64,7 +65,7 @@ export const Hero = () => {
         subtitle:
           "Professional SEO services for businesses in the DACH region. Technical SEO, content strategy, and link building to grow your traffic.",
         tagline: "Trusted by 200+ Growing Businesses",
-        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=900&fit=crop&q=80",
+        image: "/hero-seo.jpg",
         ctaPrimary: "Get Started Today",
         urgency: "Limited Offer",
         stats: { clients: "200+", costSaved: "70%", rating: "4.9/5" },
@@ -86,12 +87,17 @@ export const Hero = () => {
         setLoading(true);
         const data = await fetchHero(currentLang);
         if (!controller.signal.aborted) {
-          setHeroData(data || fallbackData);
+          if (data) {
+            setHeroData({
+              ...fallbackData,
+              ...data,
+              image: data.image?.trim() || fallbackData.image,
+            });
+          }
         }
       } catch (error) {
         if (!controller.signal.aborted) {
           console.error("Failed to fetch hero data:", error);
-          setHeroData(fallbackData);
         }
       } finally {
         if (!controller.signal.aborted) {
@@ -295,14 +301,13 @@ export const Hero = () => {
               style={{ transformStyle: "preserve-3d" }}
             >
               <motion.div style={{ transform: "translateZ(20px)" }}>
-                <Image
+                <img
                   src={heroImage}
                   alt={isGe ? "SEO-Optimierung am Arbeiten" : "SEO Optimization in Progress"}
-                  width={1200}
-                  height={900}
                   className="w-full h-auto object-cover"
-                  priority
-                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "/hero-seo.jpg";
+                  }}
                 />
               </motion.div>
 

@@ -1,5 +1,12 @@
 import { SITE_URL, absoluteUrl } from "@/lib/site-url";
 
+/** Coerce any date string to ISO 8601. Falls back to the raw string if parsing fails. */
+function toISODate(date: string): string {
+  if (!date) return new Date().toISOString();
+  const d = new Date(date);
+  return isNaN(d.getTime()) ? date : d.toISOString();
+}
+
 interface BlogStructuredDataProps {
   title: string;
   description: string;
@@ -23,8 +30,8 @@ export function generateBlogStructuredData({
     "headline": title,
     "description": description,
     "author": {
-      "@type": "Organization",
-      "name": "DON SEO",
+      "@type": "Person",
+      "name": "DON SEO Team",
       "url": SITE_URL
     },
     "publisher": {
@@ -35,8 +42,8 @@ export function generateBlogStructuredData({
         "url": absoluteUrl("/og-image.jpg")
       }
     },
-    "datePublished": publishedAt,
-    "dateModified": updatedAt || publishedAt,
+    "datePublished": toISODate(publishedAt),
+    "dateModified": toISODate(updatedAt || publishedAt),
     "image": image,
     "url": url,
     "mainEntityOfPage": {

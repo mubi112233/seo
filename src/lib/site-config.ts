@@ -21,7 +21,7 @@ export const siteConfig: SiteConfig = {
   brandMarkText: "D",
   defaultLocale: "en",
   apiBase: process.env.NEXT_PUBLIC_API_BASE || "https://api.don-seo.com",
-  tenantId: process.env.NEXT_PUBLIC_TENANT_ID || "socal_media_agency",
+  tenantId: process.env.NEXT_PUBLIC_TENANT_ID || "don_seo",
   routes: {
     bookMeeting: "/book-meeting",
     contact: "/contact",
