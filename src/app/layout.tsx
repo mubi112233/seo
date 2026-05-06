@@ -31,6 +31,16 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
+  manifest: "/site.webmanifest",
   metadataBase: new URL(SITE_URL),
   verification: {
     google: "l93HxOLqUBDjtuNfHM7OsWQd7i9MfSJo1fV_yaLAZrE",
@@ -144,6 +154,10 @@ export default async function RootLayout({
   return (
     <html lang={htmlLang} suppressHydrationWarning className={`${inter.variable} ${poppins.variable}`}>
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-LNDGNQ7Z74" />
         <script
           dangerouslySetInnerHTML={{
