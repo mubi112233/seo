@@ -186,12 +186,14 @@ export const Blog = () => {
                     </div>
                   </div>
 
-                  <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-2 sm:mb-3 text-foreground group-hover:text-gold transition-colors line-clamp-2 flex-grow">
+                  <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-2 sm:mb-3 text-foreground group-hover:text-gold transition-colors line-clamp-2">
                     {post.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6 line-clamp-2 sm:line-clamp-3">
-                    {post.excerpt}
+                  <p className="text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6 line-clamp-3">
+                    {post.excerpt?.trim() ||
+                      post.content?.replace(/<[^>]*>/g, "").slice(0, 160).trim() ||
+                      (post.sections?.[0]?.details ?? "")}
                   </p>
 
                   <div className="flex items-center justify-between pt-4 sm:pt-6 border-t border-border/50 mt-auto">
