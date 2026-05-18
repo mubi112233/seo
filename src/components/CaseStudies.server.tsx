@@ -15,7 +15,15 @@ const slugify = (title: string) =>
     .trim();
 
 export async function CaseStudies({ lang }: { lang: string }) {
-  const studies = await fetchCaseStudiesCardsData(lang);
+  let studies = [];
+  
+  try {
+    studies = await fetchCaseStudiesCardsData(lang);
+  } catch (error) {
+    console.error('CaseStudies: Failed to fetch case studies:', error);
+    // Continue with empty studies list
+  }
+  
   const copy = getCopy(lang, "caseStudies");
   const urlSeg = localeUrlPrefix((lang === "ge" ? "ge" : "en") as SiteLocale);
 

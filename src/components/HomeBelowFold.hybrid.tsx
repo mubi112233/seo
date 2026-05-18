@@ -11,7 +11,14 @@ import { SPACING } from "@/lib/constants";
 import { fetchFAQData } from "@/lib/data-fetching";
 
 export async function HomeBelowFold({ lang }: { lang: string }) {
-  const faqData = await fetchFAQData(lang);
+  let faqData = [];
+  
+  try {
+    faqData = await fetchFAQData(lang);
+  } catch (error) {
+    console.error('HomeBelowFold: Failed to fetch FAQ data:', error);
+    // Continue with empty FAQ data - don't crash the page
+  }
 
   return (
     <>
