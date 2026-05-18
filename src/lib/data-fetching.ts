@@ -82,6 +82,7 @@ export async function fetchHomePageData(lang: string): Promise<HomePageData> {
     ]);
 
     // Parse responses in parallel
+    const safeJson = (r: Response) => r.ok ? r.json().catch(() => null) : null;
     const [
       servicesData,
       testimonialsData,
@@ -90,12 +91,12 @@ export async function fetchHomePageData(lang: string): Promise<HomePageData> {
       caseStudiesData,
       blogData
     ] = await Promise.all([
-      servicesResponse.json(),
-      testimonialsResponse.json(),
-      pricingResponse.json(),
-      faqResponse.json(),
-      caseStudiesResponse.json(),
-      blogResponse.json()
+      safeJson(servicesResponse),
+      safeJson(testimonialsResponse),
+      safeJson(pricingResponse),
+      safeJson(faqResponse),
+      safeJson(caseStudiesResponse),
+      safeJson(blogResponse)
     ]);
 
     return {
@@ -128,6 +129,7 @@ export async function fetchServicesData(lang: string): Promise<Service[]> {
   try {
     const normalizedLang = normalizeLanguage(lang);
     const response = await fetchAPI(`${API_ENDPOINTS.SERVICES}?lang=${normalizedLang}`);
+    if (!response.ok) return [];
     const data = await response.json();
     return data?.services || [];
   } catch (error) {
@@ -140,6 +142,7 @@ export async function fetchTestimonialsData(lang: string): Promise<Testimonial[]
   try {
     const normalizedLang = normalizeLanguage(lang);
     const response = await fetchAPI(`${API_ENDPOINTS.TESTIMONIALS}?lang=${normalizedLang}`);
+    if (!response.ok) return [];
     const data = await response.json();
     return data?.testimonials || [];
   } catch (error) {
@@ -152,6 +155,7 @@ export async function fetchFAQData(lang: string): Promise<FAQItem[]> {
   try {
     const normalizedLang = normalizeLanguage(lang);
     const response = await fetchAPI(`${API_ENDPOINTS.FAQ}?lang=${normalizedLang}`);
+    if (!response.ok) return [];
     const data = await response.json();
     const list = Array.isArray(data?.faqs) ? (data.faqs as FAQItem[]) : [];
     return [...list].sort((a, b) => a.order - b.order);
@@ -165,6 +169,7 @@ export async function fetchCaseStudiesCardsData(lang: string): Promise<CaseStudy
   try {
     const normalizedLang = normalizeLanguage(lang);
     const response = await fetchAPI(`${API_ENDPOINTS.CASE_STUDIES}?lang=${normalizedLang}`);
+    if (!response.ok) return [];
     const data = await response.json();
     if (!Array.isArray(data?.caseStudies)) return [];
     return data.caseStudies

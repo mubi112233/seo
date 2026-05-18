@@ -46,7 +46,6 @@ export async function fetchAPI(
 ): Promise<Response> {
   const url = endpoint.startsWith('http') ? endpoint : `${getApiBase()}${endpoint}`;
   const fetchOptions = createFetchOptions(options);
-
   return fetch(url, fetchOptions);
 }
 
@@ -163,9 +162,16 @@ export interface HeroData {
   };
 }
 
+const BROKEN_IMAGES = ['photo-1432888622747-4eb9a8f2c2b5'];
+const isBrokenImage = (url?: string) => url && BROKEN_IMAGES.some(id => url.includes(id));
+
 export const fetchHero = (lang: string = 'en') => 
   fetchApiDataClient<{ hero: HeroData }>(API_ENDPOINTS.HERO, normalizeLanguage(lang))
-    .then(data => data?.hero || null);
+    .then(data => {
+      if (!data?.hero) return null;
+      if (isBrokenImage(data.hero.image)) data.hero.image = '/hero-seo.jpg';
+      return data.hero;
+    });
 
 // Services API
 export interface Service {

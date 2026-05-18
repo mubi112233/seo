@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Calendar, Clock, ArrowRight, Loader2 } from "lucide-react";
-import Image from "next/image";
+import { SafeImage } from "@/components/SafeImage";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -158,7 +158,7 @@ export const Blog = () => {
               >
                 {/* Image */}
                 <div className="relative h-44 sm:h-52 md:h-48 lg:h-56 overflow-hidden">
-                  <Image
+                  <SafeImage
                     src={post.image}
                     alt={post.title}
                     fill
