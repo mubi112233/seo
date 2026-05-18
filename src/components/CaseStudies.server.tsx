@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { getCopy } from "@/lib/copy";
 import { SPACING } from "@/lib/constants";
 import { localizedPath, siteConfig, localeUrlPrefix, type SiteLocale } from "@/lib/site-config";
-import { fetchCaseStudiesCardsData } from "@/lib/data-fetching";
+import { fetchCaseStudiesCardsData, type CaseStudyCard } from "@/lib/data-fetching";
 
 const slugify = (title: string) =>
   title
@@ -15,7 +15,7 @@ const slugify = (title: string) =>
     .trim();
 
 export async function CaseStudies({ lang }: { lang: string }) {
-  let studies = [];
+  let studies: CaseStudyCard[] = [];
   
   try {
     studies = await fetchCaseStudiesCardsData(lang);

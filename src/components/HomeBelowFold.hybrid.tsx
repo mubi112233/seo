@@ -9,9 +9,10 @@ import { FAQInteractive } from "@/components/FAQInteractive.client";
 import { FinalCTA } from "@/components/FinalCTA.server";
 import { SPACING } from "@/lib/constants";
 import { fetchFAQData } from "@/lib/data-fetching";
+import type { FAQItem } from "@/lib/api";
 
 export async function HomeBelowFold({ lang }: { lang: string }) {
-  let faqData = [];
+  let faqData: FAQItem[] = [];
   
   try {
     faqData = await fetchFAQData(lang);
