@@ -204,27 +204,16 @@ export async function fetchFinalCtaSectionData(
 ): Promise<FinalCtaSectionPayload | null> {
   try {
     const normalizedLang = normalizeLanguage(lang);
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+    const response = await fetchAPI(`${API_ENDPOINTS.FINAL_CTA}?lang=${normalizedLang}`);
     
-    try {
-      const response = await fetchAPI(`${API_ENDPOINTS.FINAL_CTA}?lang=${normalizedLang}`, {
-        signal: controller.signal,
-      });
-      clearTimeout(timeoutId);
-      
-      if (!response.ok) {
-        console.warn(`Final CTA API returned status ${response.status}`);
-        return null;
-      }
-      
-      const data = await response.json();
-      const section = data?.finalCta;
-      return section && typeof section === 'object' ? (section as FinalCtaSectionPayload) : null;
-    } catch (fetchError) {
-      clearTimeout(timeoutId);
-      throw fetchError;
+    if (!response.ok) {
+      console.warn(`Final CTA API returned status ${response.status}`);
+      return null;
     }
+    
+    const data = await response.json();
+    const section = data?.finalCta;
+    return section && typeof section === 'object' ? (section as FinalCtaSectionPayload) : null;
   } catch (error) {
     console.warn('Error fetching final CTA:', error);
     return null;
