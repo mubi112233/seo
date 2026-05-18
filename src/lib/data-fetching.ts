@@ -155,10 +155,15 @@ export async function fetchFAQData(lang: string): Promise<FAQItem[]> {
   try {
     const normalizedLang = normalizeLanguage(lang);
     const response = await fetchAPI(`${API_ENDPOINTS.FAQ}?lang=${normalizedLang}`);
-    if (!response.ok) return [];
+    
+    if (!response.ok) {
+      console.warn(`FAQ API returned status ${response.status}`);
+      return [];
+    }
+    
     const data = await response.json();
     const list = Array.isArray(data?.faqs) ? (data.faqs as FAQItem[]) : [];
-    return [...list].sort((a, b) => a.order - b.order);
+    return [...list].sort((a, b) => (a.order || 0) - (b.order || 0));
   } catch (error) {
     console.error('Error fetching FAQs:', error);
     return [];
@@ -169,7 +174,12 @@ export async function fetchCaseStudiesCardsData(lang: string): Promise<CaseStudy
   try {
     const normalizedLang = normalizeLanguage(lang);
     const response = await fetchAPI(`${API_ENDPOINTS.CASE_STUDIES}?lang=${normalizedLang}`);
-    if (!response.ok) return [];
+    
+    if (!response.ok) {
+      console.warn(`Case Studies API returned status ${response.status}`);
+      return [];
+    }
+    
     const data = await response.json();
     if (!Array.isArray(data?.caseStudies)) return [];
     return data.caseStudies
@@ -194,11 +204,27 @@ export async function fetchFinalCtaSectionData(
 ): Promise<FinalCtaSectionPayload | null> {
   try {
     const normalizedLang = normalizeLanguage(lang);
-    const response = await fetchAPI(`${API_ENDPOINTS.FINAL_CTA}?lang=${normalizedLang}`);
-    if (!response.ok) return null;
-    const data = await response.json();
-    const section = data?.finalCta;
-    return section && typeof section === 'object' ? (section as FinalCtaSectionPayload) : null;
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+    
+    try {
+      const response = await fetchAPI(`${API_ENDPOINTS.FINAL_CTA}?lang=${normalizedLang}`, {
+        signal: controller.signal,
+      });
+      clearTimeout(timeoutId);
+      
+      if (!response.ok) {
+        console.warn(`Final CTA API returned status ${response.status}`);
+        return null;
+      }
+      
+      const data = await response.json();
+      const section = data?.finalCta;
+      return section && typeof section === 'object' ? (section as FinalCtaSectionPayload) : null;
+    } catch (fetchError) {
+      clearTimeout(timeoutId);
+      throw fetchError;
+    }
   } catch (error) {
     console.warn('Error fetching final CTA:', error);
     return null;

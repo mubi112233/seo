@@ -46,6 +46,22 @@ export async function fetchAPI(
 ): Promise<Response> {
   const url = endpoint.startsWith('http') ? endpoint : `${getApiBase()}${endpoint}`;
   const fetchOptions = createFetchOptions(options);
+  
+  // Set a default timeout of 8 seconds for server-side requests if not already set
+  if (!fetchOptions.signal) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 8000);
+    
+    try {
+      const response = await fetch(url, { ...fetchOptions, signal: controller.signal });
+      clearTimeout(timeoutId);
+      return response;
+    } catch (error) {
+      clearTimeout(timeoutId);
+      throw error;
+    }
+  }
+  
   return fetch(url, fetchOptions);
 }
 
