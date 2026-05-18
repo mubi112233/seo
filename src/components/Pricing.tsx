@@ -79,16 +79,12 @@ const plans: PricingPlan[] = [
 export const Pricing = () => {
   const [vaCount, setVaCount] = useState(1);
   
-  const getLangFromPath = () => {
-    const match = window.location.pathname.match(/^\/(en|ge|de)\b/i);
-    const raw = match?.[1]?.toLowerCase() || "en";
-    return raw === "de" ? "ge" : raw;
-  };
-
   const [currentLang, setCurrentLang] = useState<string>("en");
 
   useEffect(() => {
-    setCurrentLang(getLangFromPath());
+    const match = window.location.pathname.match(/^\/(en|ge|de)\b/i);
+    const raw = match?.[1]?.toLowerCase() || "en";
+    setCurrentLang(raw === "de" ? "ge" : raw);
   }, []);
 
   const copy = getCopy(currentLang, 'pricing');
