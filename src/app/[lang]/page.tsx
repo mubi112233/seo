@@ -10,6 +10,10 @@ export const revalidate = 3600;
 
 const SUPPORTED_LANGS = ['en', 'ge', 'de'];
 
+export function generateStaticParams() {
+  return SUPPORTED_LANGS.map((lang) => ({ lang }));
+}
+
 async function getHeroMeta(lang: string) {
   try {
     const data = await fetchApiData<any>(API_ENDPOINTS.HERO, normalizeLanguage(lang));

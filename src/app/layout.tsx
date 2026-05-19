@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
-import { headers } from "next/headers";
 import "./globals.css";
 import "@/styles/main.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -33,7 +32,6 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
       { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
@@ -145,17 +143,15 @@ const websiteJsonLd = {
   publisher: { "@type": "Organization", name: "DON SEO" },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const headersList = await headers();
-  const htmlLang = headersList.get("x-html-lang") || "en";
-
   return (
-    <html lang={htmlLang} suppressHydrationWarning className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${poppins.variable}`}>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" />
+        <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-LNDGNQ7Z74" />
