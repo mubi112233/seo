@@ -46,14 +46,8 @@ const nextConfig = {
   async redirects() {
     return [];
   },
-  // Add ISR configuration for better content freshness
   async rewrites() {
-    return [
-      {
-        source: '/sitemap.xml',
-        destination: '/api/sitemap',
-      },
-    ];
+    return [];
   },
 };
 

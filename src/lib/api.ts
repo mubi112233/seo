@@ -8,7 +8,7 @@
 // API Configuration
 const getApiBase = () =>
   process.env.NEXT_PUBLIC_API_BASE ||
-  'https://api.don-seo.com';
+  'https://api.don-va.com';
 
 const getTenantId = () =>
   process.env.NEXT_PUBLIC_TENANT_ID ||
